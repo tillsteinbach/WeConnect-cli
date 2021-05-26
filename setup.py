@@ -28,7 +28,7 @@ setup(
     },
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Environment :: Console'
+        'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: System Administrators',

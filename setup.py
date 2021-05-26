@@ -10,7 +10,7 @@ SETUP_REQUIRED = (HERE / "setup_requirements.txt").read_text()
 TEST_REQUIRED = (HERE / "test_requirements.txt").read_text()
 
 setup(
-    name='weconnect_cli',
+    name='weconnect-cli',
     packages=['weconnect_cli'],
     version=open("weconnect_cli/__version.py").readlines()[-1].split()[-1].strip("\"'"),
     description='Commandline Interface to interact with the Volkswagen WeConnect Services',

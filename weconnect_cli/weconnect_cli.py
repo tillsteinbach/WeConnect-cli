@@ -48,6 +48,7 @@ def main():  # noqa: C901
     parser.add_argument('--netrc', help='File in netrc syntax providing login, default is the default netrc location '
                         '(usually your users folder). Netrc is only used when username and password are not provided '
                         'as arguments', default=None, required=False)
+    parser.set_defaults(command='none')
 
     subparsers = parser.add_subparsers(title='commands', description='Valid commands',
                                        help='The following commands can be used')
@@ -86,7 +87,10 @@ def main():  # noqa: C901
     weConnect = weconnect.WeConnect(username=username, password=password,
                                     tokenfile='/tmp/vwconnect.token', updateAfterLogin=False)
 
-    if args.command == 'list':
+    if args.command == 'none':
+        weConnect.update()
+        print(weConnect)
+    elif args.command == 'list':
         weConnect.update()
         allElements = weConnect.getLeafChildren()
         for element in allElements:

@@ -20,8 +20,8 @@ class NumberRangeArgument:
     def __call__(self, arg):
         try:
             value = int(arg)
-        except ValueError:
-            raise self.exception()
+        except ValueError as e:
+            raise self.exception() from e
         if (self.imin is not None and value < self.imin) or (self.imax is not None and value > self.imax):
             raise self.exception()
         return value
@@ -29,12 +29,12 @@ class NumberRangeArgument:
     def exception(self):
         if self.imin is not None and self.imax is not None:
             return argparse.ArgumentTypeError(f'Must be a number from {self.imin} to {self.imax}')
-        elif self.imin is not None:
+        if self.imin is not None:
             return argparse.ArgumentTypeError(f'Must be a number not smaller than {self.imin}')
-        elif self.imax is not None:
+        if self.imax is not None:
             return argparse.ArgumentTypeError(f'Must be number not larger than {self.imax}')
-        else:
-            return argparse.ArgumentTypeError('Must be a number')
+
+        return argparse.ArgumentTypeError('Must be a number')
 
 
 def main():  # noqa: C901
@@ -78,7 +78,7 @@ def main():  # noqa: C901
             if not args.username:
                 print('.netrc file was not found. Create it or provide at least a username with --username',
                       file=sys.stderr)
-                exit(1)
+                sys.exit(1)
             username = args.username
             password = getpass.getpass()
 
@@ -102,19 +102,19 @@ def main():  # noqa: C901
         else:
             print(f'id {args.id} not found', file=sys.stderr)
     elif args.command == 'events':
-        def observer(object, flags):
-            if (flags & addressable.AddressableLeaf.ObserverEvent.ENABLED):
-                print(str(datetime.now()) + ': ' + object.getGlobalAddress() + ': new object created')
-            elif (flags & addressable.AddressableLeaf.ObserverEvent.DISABLED):
-                print(str(datetime.now()) + ': ' + object.getGlobalAddress() + ': object not available anymore')
-            elif (flags & addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED):
-                print(str(datetime.now()) + ': ' + object.getGlobalAddress() + ': new value: ' + str(object))
-            elif (flags & addressable.AddressableLeaf.ObserverEvent.UPDATED_FROM_SERVER):
-                print(str(datetime.now()) + ': ' + object.getGlobalAddress()
-                      + ': was updated from server but did not change: ' + str(object))
+        def observer(element, flags):
+            if flags & addressable.AddressableLeaf.ObserverEvent.ENABLED:
+                print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': new object created')
+            elif flags & addressable.AddressableLeaf.ObserverEvent.DISABLED:
+                print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': object not available anymore')
+            elif flags & addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED:
+                print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': new value: ' + str(element))
+            elif flags & addressable.AddressableLeaf.ObserverEvent.UPDATED_FROM_SERVER:
+                print(str(datetime.now()) + ': ' + element.getGlobalAddress()
+                      + ': was updated from server but did not change: ' + str(element))
             else:
-                print(str(object.lastUpdateFromServer) + ' (' + str(flags) + '): '
-                      + object.getGlobalAddress() + ': ' + str(object))
+                print(str(element.lastUpdateFromServer) + ' (' + str(flags) + '): '
+                      + element.getGlobalAddress() + ': ' + str(element))
 
         weConnect.addObserver(observer, addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED)
         while True:

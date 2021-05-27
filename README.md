@@ -73,3 +73,6 @@ Please feel free to open an issue at [GitHub Issue page](https://github.com/till
 
 ### Known Issues
 - The Tool is in alpha state and may change unexpectedly at any time!
+
+## Related Projects:
+- [WeConnect-MQTT](https://github.com/tillsteinbach/WeConnect-mqtt): MQTT Client that publishes data from Volkswagen WeConnect

@@ -1,14 +1,19 @@
 from datetime import datetime
 import sys
+import os
 import argparse
 import netrc
 import getpass
 import logging
 import time
+import tempfile
 
 from weconnect import weconnect, addressable
 
 from .__version import __version__
+
+LOG_LEVELS = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+DEFAULT_LOG_LEVEL = "ERROR"
 
 
 class NumberRangeArgument:
@@ -48,6 +53,17 @@ def main():  # noqa: C901
     parser.add_argument('--netrc', help='File in netrc syntax providing login, default is the default netrc location '
                         '(usually your users folder). Netrc is only used when username and password are not provided '
                         'as arguments', default=None, required=False)
+    parser.add_argument('-v', '--verbose', action="append_const", const=-1,)
+    parser.add_argument('--no-token-storage', dest='noTokenStorage', help='Do not store token on filesystem (this'
+                        ' will cause a new login for every invokation!)', action='store_true')
+    defaultTemp = os.path.join(tempfile.gettempdir(), 'weconnect.token')
+    parser.add_argument('--tokenfile', help=f'file to store token (default: {defaultTemp})', default=defaultTemp)
+    parser.add_argument('--cache', help='Write http requests to cache and use those in subsequent calls when'
+                        ' --fromcache was provided', action='store_true')
+    parser.add_argument('--fromcache', help='Use previously captured data stored with --cache', action='store_true')
+    defaultCacheTemp = os.path.join(tempfile.gettempdir(), 'weconnect.cache')
+    parser.add_argument('--cachefile', help=f'file to store cache (default: {defaultTemp})', default=defaultCacheTemp)
+
     parser.set_defaults(command='none')
 
     subparsers = parser.add_subparsers(title='commands', description='Valid commands',
@@ -64,6 +80,11 @@ def main():  # noqa: C901
                               type=NumberRangeArgument(1), required=False, default=300)
 
     args = parser.parse_args()
+    logLevel = LOG_LEVELS.index(DEFAULT_LOG_LEVEL)
+    for adjustment in args.verbose or ():
+        logLevel = min(len(LOG_LEVELS) - 1, max(logLevel + adjustment, 0))
+
+    logging.basicConfig(level=LOG_LEVELS[logLevel])
 
     username = None
     password = None
@@ -82,10 +103,14 @@ def main():  # noqa: C901
                 sys.exit(1)
             username = args.username
             password = getpass.getpass()
+    tokenfile = None
+    if not args.noTokenStorage:
+        tokenfile = args.tokenfile
 
-    logging.basicConfig(level=logging.INFO)
-    weConnect = weconnect.WeConnect(username=username, password=password,
-                                    tokenfile='/tmp/vwconnect.token', updateAfterLogin=False)
+    weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile, updateAfterLogin=False,
+                                    loginOnInit=(not args.fromcache))
+    if args.fromcache:
+        weConnect.fillCacheFromJson(args.cachefile)
 
     if args.command == 'none':
         weConnect.update()
@@ -126,3 +151,7 @@ def main():  # noqa: C901
             time.sleep(args.interval)
     else:
         print('command not implemented', file=sys.stderr)
+    if not args.fromcache:
+        weConnect.persistTokens()
+    if args.cache:
+        weConnect.persistCacheAsJson(args.cachefile)

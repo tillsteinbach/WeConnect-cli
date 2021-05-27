@@ -76,3 +76,4 @@ Please feel free to open an issue at [GitHub Issue page](https://github.com/till
 
 ## Related Projects:
 - [WeConnect-MQTT](https://github.com/tillsteinbach/WeConnect-mqtt): MQTT Client that publishes data from Volkswagen WeConnect
+- [WeConnect-python](https://github.com/tillsteinbach/WeConnect-python): Python API to connect to Volkswagen WeConnect Services

@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.1] - 2021-05-28
+### Fixed
+- Output when there is no command added
+
 ## [0.2.0] - 2021-05-27
 ### Added
 - Possibility to cache data between calls

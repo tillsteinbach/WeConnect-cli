@@ -64,7 +64,8 @@ def main():  # noqa: C901
                         ' --fromcache was provided', action='store_true')
     parser.add_argument('--fromcache', help='Use previously captured data stored with --cache', action='store_true')
     defaultCacheTemp = os.path.join(tempfile.gettempdir(), 'weconnect.cache')
-    parser.add_argument('--cachefile', help=f'file to store cache (default: {defaultTemp})', default=defaultCacheTemp)
+    parser.add_argument('--cachefile', help=f'file to store cache (default: {defaultCacheTemp})',
+                        default=defaultCacheTemp)
 
     parser.set_defaults(command='none')
 

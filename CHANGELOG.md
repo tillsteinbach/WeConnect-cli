@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Fixed
+- Help text for cache file displaying correct default value
 
 ## [0.2.1] - 2021-05-28
 ### Fixed

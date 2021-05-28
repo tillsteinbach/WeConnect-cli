@@ -15,7 +15,7 @@ from .__version import __version__
 LOG_LEVELS = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 DEFAULT_LOG_LEVEL = "ERROR"
 
-LOG = logging.getLogger("weconnect-mqtt")
+LOG = logging.getLogger("weconnect-cli")
 
 
 class NumberRangeArgument:

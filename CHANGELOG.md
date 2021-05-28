@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 ### Fixed
 - Help text for cache file displaying correct default value
+- Corrected name for logger
 
 ### Added
-- Default value for -netrc file path shown in help
+- Default value for .netrc file path shown in help
 
 ## [0.2.1] - 2021-05-28
 ### Fixed

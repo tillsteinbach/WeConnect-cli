@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Fixed
+- Correct minimum required python version to 3.7
+
 ## [0.3.0] - 2021-05-28
 ### Fixed
 - Help text for cache file displaying correct default value

@@ -17,10 +17,16 @@ If you want to query data from weconnect you can use this command line interface
 You need to install python 3 on your system: [How to install python](https://realpython.com/installing-python/)
 
 ## How to install
-If you don't want to use WeConnect-cli, the easiest way is to obtain it from [PyPI](https://pypi.org/project/weconnect-cli/). Just install instead using:
+If you want to use WeConnect-cli, the easiest way is to obtain it from [PyPI](https://pypi.org/project/weconnect-cli/). Just install instead using:
 ```bash
 pip3 install weconnect-cli
 ```
+### Updates
+If you want to update WeConnect-cli, the easiest way is:
+```bash
+pip3 install weconnect-cli --upgrade
+```
+
 ## How to use
 Start weconnect-cli from the commandline:
 ```bash

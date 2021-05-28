@@ -36,7 +36,7 @@ setup(
         'Topic :: Utilities',
         'Topic :: System :: Monitoring',
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     setup_requires=SETUP_REQUIRED,
     tests_require=TEST_REQUIRED,
 )

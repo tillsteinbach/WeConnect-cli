@@ -44,7 +44,7 @@ class NumberRangeArgument:
         return argparse.ArgumentTypeError('Must be a number')
 
 
-def main():  # noqa: C901
+def main():  # noqa: C901 # pylint: disable=too-many-statements
     parser = argparse.ArgumentParser(
         prog='weconnect-cli',
         description='Commandline Interface to interact with the Volkswagen WeConnect Services')
@@ -122,51 +122,57 @@ def main():  # noqa: C901
     if not args.noTokenStorage:
         tokenfile = args.tokenfile
 
-    weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile, updateAfterLogin=False,
-                                    loginOnInit=(not args.fromcache))
-    if args.fromcache:
-        weConnect.fillCacheFromJson(args.cachefile)
+    try:
+        weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
+                                        updateAfterLogin=False, loginOnInit=(not args.fromcache))
+        if args.fromcache:
+            weConnect.fillCacheFromJson(args.cachefile)
 
-    if args.command == 'none':
-        weConnect.update()
-        print(weConnect)
-    elif args.command == 'list':
-        weConnect.update()
-        allElements = weConnect.getLeafChildren()
-        for element in allElements:
-            print(element)
-    elif args.command == 'get':
-        weConnect.update()
-        element = weConnect.getByAddressString(args.id)
-        if element:
-            if isinstance(element, dict):
-                print('\n'.join([str(value) for value in element.values()]))
-            else:
-                print(element)
-        else:
-            print(f'id {args.id} not found', file=sys.stderr)
-    elif args.command == 'events':
-        def observer(element, flags):
-            if flags & addressable.AddressableLeaf.ObserverEvent.ENABLED:
-                print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': new object created')
-            elif flags & addressable.AddressableLeaf.ObserverEvent.DISABLED:
-                print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': object not available anymore')
-            elif flags & addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED:
-                print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': new value: ' + str(element))
-            elif flags & addressable.AddressableLeaf.ObserverEvent.UPDATED_FROM_SERVER:
-                print(str(datetime.now()) + ': ' + element.getGlobalAddress()
-                      + ': was updated from server but did not change: ' + str(element))
-            else:
-                print(str(element.lastUpdateFromServer) + ' (' + str(flags) + '): '
-                      + element.getGlobalAddress() + ': ' + str(element))
-
-        weConnect.addObserver(observer, addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED)
-        while True:
+        if args.command == 'none':
             weConnect.update()
-            time.sleep(args.interval)
-    else:
-        LOG.error('command not implemented')
-    if not args.fromcache:
-        weConnect.persistTokens()
-    if args.cache:
-        weConnect.persistCacheAsJson(args.cachefile)
+            print(weConnect)
+        elif args.command == 'list':
+            weConnect.update()
+            allElements = weConnect.getLeafChildren()
+            for element in allElements:
+                print(element)
+        elif args.command == 'get':
+            weConnect.update()
+            element = weConnect.getByAddressString(args.id)
+            if element:
+                if isinstance(element, dict):
+                    print('\n'.join([str(value) for value in element.values()]))
+                else:
+                    print(element)
+            else:
+                print(f'id {args.id} not found', file=sys.stderr)
+        elif args.command == 'events':
+            def observer(element, flags):
+                if flags & addressable.AddressableLeaf.ObserverEvent.ENABLED:
+                    print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': new object created')
+                elif flags & addressable.AddressableLeaf.ObserverEvent.DISABLED:
+                    print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': object not available anymore')
+                elif flags & addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED:
+                    print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': new value: ' + str(element))
+                elif flags & addressable.AddressableLeaf.ObserverEvent.UPDATED_FROM_SERVER:
+                    print(str(datetime.now()) + ': ' + element.getGlobalAddress()
+                          + ': was updated from server but did not change: ' + str(element))
+                else:
+                    print(str(element.lastUpdateFromServer) + ' (' + str(flags) + '): '
+                          + element.getGlobalAddress() + ': ' + str(element))
+
+            weConnect.addObserver(observer, addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED)
+            while True:
+                weConnect.update()
+                time.sleep(args.interval)
+        else:
+            LOG.error('command not implemented')
+        if not args.fromcache:
+            weConnect.persistTokens()
+        if args.cache:
+            weConnect.persistCacheAsJson(args.cachefile)
+    except weconnect.AuthentificationError as e:
+        LOG.critical('There was a problem when authenticating with WeConnect: %s', e)
+    except weconnect.APICompatibilityError as e:
+        LOG.critical('There was a problem when communicating with WeConnect.'
+                     ' If this problem persists please open a bug report: %s', e)

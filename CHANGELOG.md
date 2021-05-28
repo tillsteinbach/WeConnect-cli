@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Help text for cache file displaying correct default value
 
+### Added
+- Default value for -netrc file path shown in help
+
 ## [0.2.1] - 2021-05-28
 ### Fixed
 - Output when there is no command added

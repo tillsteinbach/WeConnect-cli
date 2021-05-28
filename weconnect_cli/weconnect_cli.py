@@ -52,9 +52,10 @@ def main():  # noqa: C901
                         version='%(prog)s {version}'.format(version=__version__))
     parser.add_argument('-u', '--username', help='Username of Volkswagen id', required=False)
     parser.add_argument('-p', '--password', help='Password of Volkswagen id', required=False)
-    parser.add_argument('--netrc', help='File in netrc syntax providing login, default is the default netrc location '
-                        '(usually your users folder). Netrc is only used when username and password are not provided '
-                        'as arguments', default=None, required=False)
+    defaultNetRc = os.path.join(os.path.expanduser("~"), ".netrc")
+    parser.add_argument('--netrc', help=f'File in netrc syntax providing login (default: {defaultNetRc}).'
+                        ' Netrc is only used when username and password are not provided  as arguments',
+                        default=None, required=False)
     parser.add_argument('-v', '--verbose', action="append_const", const=-1,)
     parser.add_argument('--no-token-storage', dest='noTokenStorage', help='Do not store token on filesystem (this'
                         ' will cause a new login for every invokation!)', action='store_true')

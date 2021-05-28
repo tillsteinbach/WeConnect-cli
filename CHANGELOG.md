@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Help text for cache file displaying correct default value
 - Corrected name for logger
+- Improved error messages for missing netrc files
 
 ### Added
 - Default value for .netrc file path shown in help

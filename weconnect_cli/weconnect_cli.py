@@ -129,15 +129,15 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements
             weConnect.fillCacheFromJson(args.cachefile)
 
         if args.command == 'none':
-            weConnect.update()
+            weConnect.update(fromCache=args.fromcache)
             print(weConnect)
         elif args.command == 'list':
-            weConnect.update()
+            weConnect.update(fromCache=args.fromcache)
             allElements = weConnect.getLeafChildren()
             for element in allElements:
                 print(element)
         elif args.command == 'get':
-            weConnect.update()
+            weConnect.update(fromCache=args.fromcache)
             element = weConnect.getByAddressString(args.id)
             if element:
                 if isinstance(element, dict):
@@ -147,6 +147,9 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
         elif args.command == 'events':
+            if args.fromcache:
+                LOG.warning('ignoring --fromcache parameter in events mode')
+
             def observer(element, flags):
                 if flags & addressable.AddressableLeaf.ObserverEvent.ENABLED:
                     print(str(datetime.now()) + ': ' + element.getGlobalAddress() + ': new object created')

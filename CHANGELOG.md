@@ -2,8 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.3.1] - 2021-05-31
 ### Fixed
 - Correct minimum required python version to 3.7
+- Problems when using caching
 
 ## [0.3.0] - 2021-05-28
 ### Fixed

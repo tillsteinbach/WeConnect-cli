@@ -44,7 +44,7 @@ class NumberRangeArgument:
         return argparse.ArgumentTypeError('Must be a number')
 
 
-def main():  # noqa: C901 # pylint: disable=too-many-statements
+def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branches
     parser = argparse.ArgumentParser(
         prog='weconnect-cli',
         description='Commandline Interface to interact with the Volkswagen WeConnect Services')

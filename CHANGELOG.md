@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [0.4.0] - 2021-06-02
 ### Changed
 - The default behaviour is now to always cache unless --no-cache is provided.
   The cache outdates after --interval seconds (default 300). The reason for this
@@ -33,7 +34,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.3.1...HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.4.0
 [0.3.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.3.1
 [0.3.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.3.0
 [0.2.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.2.1

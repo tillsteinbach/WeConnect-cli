@@ -61,12 +61,12 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                         ' will cause a new login for every invokation!)', action='store_true')
     defaultTemp = os.path.join(tempfile.gettempdir(), 'weconnect.token')
     parser.add_argument('--tokenfile', help=f'file to store token (default: {defaultTemp})', default=defaultTemp)
-    parser.add_argument('--cache', help='Write http requests to cache and use those in subsequent calls when'
-                        ' --fromcache was provided', action='store_true')
-    parser.add_argument('--fromcache', help='Use previously captured data stored with --cache', action='store_true')
+    parser.add_argument('--no-cache', dest='noCache', help='Do not use cache', action='store_true')
     defaultCacheTemp = os.path.join(tempfile.gettempdir(), 'weconnect.cache')
     parser.add_argument('--cachefile', help=f'file to store cache (default: {defaultCacheTemp})',
                         default=defaultCacheTemp)
+    parser.add_argument('-i', '--interval', help='Query interval in seconds, used for cache and events',
+                              type=NumberRangeArgument(1), required=False, default=300)
 
     parser.set_defaults(command='none')
 
@@ -80,8 +80,6 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     parserEvents = subparsers.add_parser(
         'events', aliases=['e'], help='Continously retrieve events and show on console')
     parserEvents.set_defaults(command='events')
-    parserEvents.add_argument('-i', '--interval', help='Query interval in seconds',
-                              type=NumberRangeArgument(1), required=False, default=300)
 
     args = parser.parse_args()
     logLevel = LOG_LEVELS.index(DEFAULT_LOG_LEVEL)
@@ -124,20 +122,22 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
 
     try:
         weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
-                                        updateAfterLogin=False, loginOnInit=(not args.fromcache))
-        if args.fromcache:
-            weConnect.fillCacheFromJson(args.cachefile)
+                                        updateAfterLogin=False, loginOnInit=False)
+        if args.noCache or not os.path.isfile(args.cachefile):
+            weConnect.login()
+        else:
+            weConnect.fillCacheFromJson(args.cachefile, maxAge=args.interval)
 
         if args.command == 'none':
-            weConnect.update(fromCache=args.fromcache)
+            weConnect.update()
             print(weConnect)
         elif args.command == 'list':
-            weConnect.update(fromCache=args.fromcache)
+            weConnect.update()
             allElements = weConnect.getLeafChildren()
             for element in allElements:
                 print(element)
         elif args.command == 'get':
-            weConnect.update(fromCache=args.fromcache)
+            weConnect.update()
             element = weConnect.getByAddressString(args.id)
             if element:
                 if isinstance(element, dict):
@@ -147,8 +147,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
         elif args.command == 'events':
-            if args.fromcache:
-                LOG.warning('ignoring --fromcache parameter in events mode')
+            if args.noCache:
+                LOG.warning('ignoring --no-cache parameter in events mode')
 
             def observer(element, flags):
                 if flags & addressable.AddressableLeaf.ObserverEvent.ENABLED:
@@ -170,9 +170,9 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 time.sleep(args.interval)
         else:
             LOG.error('command not implemented')
-        if not args.fromcache:
+        if not args.noTokenStorage:
             weConnect.persistTokens()
-        if args.cache:
+        if not args.noCache:
             weConnect.persistCacheAsJson(args.cachefile)
     except weconnect.AuthentificationError as e:
         LOG.critical('There was a problem when authenticating with WeConnect: %s', e)

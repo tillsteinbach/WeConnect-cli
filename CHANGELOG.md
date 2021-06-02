@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Changed
+- The default behaviour is now to always cache unless --no-cache is provided.
+  The cache outdates after --interval seconds (default 300). The reason for this
+  change is to not unncessesarily stress VW servers. Use --no-cache option with care.
 
 ## [0.3.1] - 2021-05-31
 ### Fixed

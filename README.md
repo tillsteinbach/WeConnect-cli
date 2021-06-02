@@ -62,6 +62,9 @@ weconnect-cli events
 2021-05-26 16:49:58.698980: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/frontLeft/lockState: new value: unlocked
 2021-05-26 16:49:58.699056: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/frontLeft/openState: new value: closed
 ```
+### Caching
+By default weconnect-cli will cache (store) the data for 300 seconds before retrieving new data from the servers. This makes weconnect-cli more responsive and at the same time does not cause unneccessary requests to the vw servers. If you want to increase the cache duration use --interval option. If you do not want to cache use --no-cache option. Please use the no-cache option with care. You are generating traffic with subsequent requests.
+
 ### Credentials
 If you do not want to provide your username or password all the time you have to create a ".netrc" file at the appropriate location (usually this is your home folder):
 ```

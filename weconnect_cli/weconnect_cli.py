@@ -282,7 +282,7 @@ class WeConnectShell(cmd.Cmd):
             path = self.pwd.getGlobalAddress()
             if path == '':
                 path = '/'
-            WeConnectShell.prompt = f'weconnect-sh:{path}$ '
+            self.setPrompt(path)
         else:
             print(f'*** {arguments} does not exist')
 

@@ -130,7 +130,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     if not args.noTokenStorage:
         tokenfile = args.tokenfile
 
-    try:
+    try:  # pylint: disable=too-many-nested-blocks
         weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
                                         updateAfterLogin=False, loginOnInit=False)
         if args.noCache or not os.path.isfile(args.cachefile):
@@ -173,7 +173,14 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 try:
                     if element.valueType in [int, float]:
                         newValue = element.valueType(args.value)
-                    if issubclass(element.valueType, Enum):
+                    elif issubclass(element.valueType, Enum):
+                        newValue = element.valueType(args.value)
+                        try:
+                            allowedValues = element.valueType.allowedValues()
+                            if newValue not in allowedValues:
+                                raise ValueError('Value is not in allowed values')
+                        except AttributeError:
+                            pass
                         newValue = element.valueType(args.value)
                     else:
                         newValue = args.value
@@ -190,7 +197,10 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                     elif element.valueType == bool:
                         valueFormat = 'True/False (Boolean)'
                     elif issubclass(element.valueType, Enum):
-                        valueFormat = 'select one of ' + ', '.join([enum.value for enum in element.valueType])
+                        try:
+                            valueFormat = 'select one of [' + ', '.join([enum.value for enum in element.valueType.allowedValues()]) + ']'
+                        except AttributeError:
+                            valueFormat = 'select one of [' + ', '.join([enum.value for enum in element.valueType])
                     print(f'id {args.id} cannot be set. You need to provide it in the correct format {valueFormat}',
                           file=sys.stderr)
                     sys.exit(-1)

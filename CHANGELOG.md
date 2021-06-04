@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- Better suggestions for possible Enum values on set command
+
 ## [0.5.0] - 2021-06-04
 ### Added
 - Possibility to set attributes and control services

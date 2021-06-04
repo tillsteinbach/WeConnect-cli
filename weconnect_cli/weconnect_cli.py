@@ -7,8 +7,10 @@ import getpass
 import logging
 import time
 import tempfile
+import cmd
+from enum import Enum
 
-from weconnect import weconnect, addressable
+from weconnect import weconnect, addressable, errors
 
 from .__version import __version__
 
@@ -44,7 +46,7 @@ class NumberRangeArgument:
         return argparse.ArgumentTypeError('Must be a number')
 
 
-def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branches
+def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branches,too-many-locals
     parser = argparse.ArgumentParser(
         prog='weconnect-cli',
         description='Commandline Interface to interact with the Volkswagen WeConnect Services')
@@ -68,18 +70,26 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     parser.add_argument('-i', '--interval', help='Query interval in seconds, used for cache and events',
                               type=NumberRangeArgument(1), required=False, default=300)
 
-    parser.set_defaults(command='none')
+    parser.set_defaults(command='shell')
 
     subparsers = parser.add_subparsers(title='commands', description='Valid commands',
                                        help='The following commands can be used')
     parserList = subparsers.add_parser('list', aliases=['l'], help='List available ressource ids and exit')
+    parserList.add_argument('-s', '--setters', help='List attributes that can be set', action='store_true')
     parserList.set_defaults(command='list')
     parserGet = subparsers.add_parser('get', aliases=['g'], help='Get ressources by id and exit')
     parserGet.add_argument('id', metavar='ID', type=str, help='Id to fetch')
     parserGet.set_defaults(command='get')
+    parserGet = subparsers.add_parser('set', aliases=['s'], help='Set ressources by id and exit')
+    parserGet.add_argument('id', metavar='ID', type=str, help='Id to set')
+    parserGet.add_argument('value', metavar='VALUE', type=str, help='Value to set')
+    parserGet.set_defaults(command='set')
     parserEvents = subparsers.add_parser(
         'events', aliases=['e'], help='Continously retrieve events and show on console')
     parserEvents.set_defaults(command='events')
+    parserShell = subparsers.add_parser(
+        'shell', aliases=['sh'], help='Start WeConnect shell')
+    parserShell.set_defaults(command='shell')
 
     args = parser.parse_args()
     logLevel = LOG_LEVELS.index(DEFAULT_LOG_LEVEL)
@@ -128,14 +138,23 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
         else:
             weConnect.fillCacheFromJson(args.cachefile, maxAge=args.interval)
 
-        if args.command == 'none':
-            weConnect.update()
-            print(weConnect)
+        if args.command == 'shell':
+            try:
+                weConnect.update()
+                # disable caching
+                weConnect.clearCache(maxAge=None)
+                WeConnectShell(weConnect).cmdloop()
+            except KeyboardInterrupt:
+                pass
         elif args.command == 'list':
             weConnect.update()
             allElements = weConnect.getLeafChildren()
             for element in allElements:
-                print(element)
+                if args.setters:
+                    if isinstance(element, addressable.ChangeableAttribute):
+                        print(element.getGlobalAddress())
+                else:
+                    print(element.getGlobalAddress())
         elif args.command == 'get':
             weConnect.update()
             element = weConnect.getByAddressString(args.id)
@@ -146,6 +165,45 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                     print(element)
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
+                sys.exit(-1)
+        elif args.command == 'set':
+            weConnect.update()
+            element = weConnect.getByAddressString(args.id)
+            if element:
+                try:
+                    if element.valueType in [int, float]:
+                        newValue = element.valueType(args.value)
+                    if issubclass(element.valueType, Enum):
+                        newValue = element.valueType(args.value)
+                    else:
+                        newValue = args.value
+                    if newValue == element.value:
+                        print(f'id {args.id} cannot be set. Value {args.value} is already set', file=sys.stderr)
+                        sys.exit(-1)
+                    element.value = newValue
+                except ValueError:
+                    valueFormat = ''
+                    if element.valueType == int:
+                        valueFormat = 'N (Decimal number)'
+                    elif element.valueType == float:
+                        valueFormat = 'F.F (Floating Point Number)'
+                    elif element.valueType == bool:
+                        valueFormat = 'True/False (Boolean)'
+                    elif issubclass(element.valueType, Enum):
+                        valueFormat = 'select one of ' + ', '.join([enum.value for enum in element.valueType])
+                    print(f'id {args.id} cannot be set. You need to provide it in the correct format {valueFormat}',
+                          file=sys.stderr)
+                    sys.exit(-1)
+                except NotImplementedError:
+                    print(f'id {args.id} cannot be set. You can see all changeable entries with "list -s"',
+                          file=sys.stderr)
+                    sys.exit(-1)
+                except errors.SetterError as err:
+                    print(f'id {args.id} cannot be set: %s', err, file=sys.stderr)
+                    sys.exit(-1)
+            else:
+                print(f'id {args.id} not found', file=sys.stderr)
+                sys.exit(-1)
         elif args.command == 'events':
             if args.noCache:
                 LOG.warning('ignoring --no-cache parameter in events mode')
@@ -164,18 +222,131 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                     print(str(element.lastUpdateFromServer) + ' (' + str(flags) + '): '
                           + element.getGlobalAddress() + ': ' + str(element))
 
-            weConnect.addObserver(observer, addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED)
+            weConnect.addObserver(observer, addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED,
+                                  priority=addressable.AddressableLeaf.ObserverPriority.USER_MID)
             while True:
                 weConnect.update()
                 time.sleep(args.interval)
         else:
             LOG.error('command not implemented')
+            sys.exit(-1)
         if not args.noTokenStorage:
             weConnect.persistTokens()
         if not args.noCache:
             weConnect.persistCacheAsJson(args.cachefile)
-    except weconnect.AuthentificationError as e:
+    except errors.AuthentificationError as e:
         LOG.critical('There was a problem when authenticating with WeConnect: %s', e)
-    except weconnect.APICompatibilityError as e:
+        sys.exit(-1)
+    except errors.APICompatibilityError as e:
         LOG.critical('There was a problem when communicating with WeConnect.'
                      ' If this problem persists please open a bug report: %s', e)
+        sys.exit(-1)
+
+
+class WeConnectShell(cmd.Cmd):
+    prompt = 'error'
+    intro = "Welcome! Type ? to list commands"
+
+    def __init__(self, weConnect, completekey='tab', stdin=None, stdout=None,):
+        self.weconnect = weConnect
+        self.pwd = weConnect
+        super().__init__(completekey=completekey, stdin=stdin, stdout=stdout)
+        self.setPrompt(self.weconnect.getGlobalAddress())
+
+    def setPrompt(self, path):
+        if path == '':
+            path = '/'
+        WeConnectShell.prompt = f'{self.weconnect.username}@weconnect-sh:{path}$'
+
+    def help_exit(self):  # pylint: disable=no-self-use
+        print('exit the application. Shorthand: x q Ctrl-D.')
+
+    def do_exit(self, arguments):  # pylint: disable=no-self-use
+        del arguments
+        print("Bye")
+        return True
+
+    def help_cd(self):  # pylint: disable=no-self-use
+        print('change location in tree')
+
+    def do_cd(self, arguments):
+        if arguments is None or arguments == '':
+            arguments = '/'
+        if arguments.startswith('/'):
+            path = arguments
+        else:
+            path = f'{self.pwd.getGlobalAddress()}/{arguments}'
+        newPwd = self.weconnect.getByAddressString(path)
+        if newPwd is not None and newPwd:
+            self.pwd = newPwd
+            path = self.pwd.getGlobalAddress()
+            if path == '':
+                path = '/'
+            WeConnectShell.prompt = f'weconnect-sh:{path}$ '
+        else:
+            print(f'*** {arguments} does not exist')
+
+    def complete_cd(self, text, line, begidx, endidx):
+        del line
+        del begidx
+        del endidx
+        if text.startswith('/'):
+            return [child.getGlobalAddress() for child in self.weconnect.getLeafChildren() if child.getGlobalAddress().startswith(text)]
+        return [child.getLocalAddress() for child in self.pwd.children if child.getLocalAddress().startswith(text)]
+
+    def help_ls(self):  # pylint: disable=no-self-use
+        print('list subelements of current path')
+
+    def do_ls(self, arguments):
+        del arguments
+        if self.pwd.parent is not None:
+            print('..')
+        if isinstance(self.pwd, addressable.AddressableObject):
+            for child in self.pwd.children:
+                print(child.getLocalAddress())
+
+    def help_pwd(self):  # pylint: disable=no-self-use
+        print('show current path')
+
+    def do_pwd(self, arguments):
+        del arguments
+        path = self.pwd.getGlobalAddress()
+        if path == '':
+            path = '/'
+        print(path)
+
+    def help_update(self):  # pylint: disable=no-self-use
+        print('update the data from the server')
+
+    def do_update(self, arguments):
+        del arguments
+        self.weconnect.update()
+        print('update done')
+
+    def help_cat(self):  # pylint: disable=no-self-use
+        print('Print content')
+
+    def do_cat(self, arguments):
+        del arguments
+        print(str(self.pwd))
+
+    def help_find(self):  # pylint: disable=no-self-use
+        print('Find lists all elements recursively')
+
+    def do_find(self, arguments):
+        setters = bool(arguments == '-s')
+        allElements = self.pwd.getLeafChildren()
+        for element in allElements:
+            if setters:
+                if isinstance(element, addressable.ChangeableAttribute):
+                    print(element.getGlobalAddress())
+            else:
+                print(element.getGlobalAddress())
+
+    def default(self, line):
+        if line in ('x', 'q'):
+            return self.do_exit(line)
+        return super().default(line)
+
+    do_EOF = do_exit
+    help_EOF = help_exit

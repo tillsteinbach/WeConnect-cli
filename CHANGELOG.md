@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- Possibility to set attributes and control services
+- New WeConnect shell for interactive working with weconnect (experimental)
+
 ## [0.4.0] - 2021-06-02
 ### Changed
 - The default behaviour is now to always cache unless --no-cache is provided.

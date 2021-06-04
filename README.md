@@ -55,7 +55,7 @@ ID.3
 ```
 or the "set" command:
 ```bash
-weconnect-cli --username user@mail.de --password test123 get /vehicles/WVWABCE1ZSD057394/controls/climatization stop
+weconnect-cli --username user@mail.de --password test123 set /vehicles/WVWABCE1ZSD057394/controls/climatization stop
 ```
 The "events" command allows you to monitor what is happening on the WeConnect Interface:
 ```bash

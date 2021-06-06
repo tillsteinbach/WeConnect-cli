@@ -1,1 +1,1 @@
-weconnect==0.4.0
+weconnect==0.4.1

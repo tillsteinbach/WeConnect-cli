@@ -2,8 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.5.1] - 2021-06-06
 ### Added
 - Better suggestions for possible Enum values on set command
+
+### Changed
+- Updated to API version 0.4.1
 
 ## [0.5.0] - 2021-06-04
 ### Added
@@ -42,7 +47,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.5.0...HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.5.1
 [0.5.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.5.0
 [0.4.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.4.0
 [0.3.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.3.1

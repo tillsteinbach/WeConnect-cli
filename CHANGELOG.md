@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+###Changed
+- API Version updated to 0.5.0
 
 ## [0.5.1] - 2021-06-06
 ### Added

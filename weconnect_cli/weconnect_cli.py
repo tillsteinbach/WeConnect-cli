@@ -8,7 +8,6 @@ import logging
 import time
 import tempfile
 import cmd
-from enum import Enum
 
 from weconnect import weconnect, addressable, errors
 
@@ -171,38 +170,9 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             element = weConnect.getByAddressString(args.id)
             if element:
                 try:
-                    if element.valueType in [int, float]:
-                        newValue = element.valueType(args.value)
-                    elif issubclass(element.valueType, Enum):
-                        newValue = element.valueType(args.value)
-                        try:
-                            allowedValues = element.valueType.allowedValues()
-                            if newValue not in allowedValues:
-                                raise ValueError('Value is not in allowed values')
-                        except AttributeError:
-                            pass
-                        newValue = element.valueType(args.value)
-                    else:
-                        newValue = args.value
-                    if newValue == element.value:
-                        print(f'id {args.id} cannot be set. Value {args.value} is already set', file=sys.stderr)
-                        sys.exit(-1)
-                    element.value = newValue
-                except ValueError:
-                    valueFormat = ''
-                    if element.valueType == int:
-                        valueFormat = 'N (Decimal number)'
-                    elif element.valueType == float:
-                        valueFormat = 'F.F (Floating Point Number)'
-                    elif element.valueType == bool:
-                        valueFormat = 'True/False (Boolean)'
-                    elif issubclass(element.valueType, Enum):
-                        try:
-                            valueFormat = 'select one of [' + ', '.join([enum.value for enum in element.valueType.allowedValues()]) + ']'
-                        except AttributeError:
-                            valueFormat = 'select one of [' + ', '.join([enum.value for enum in element.valueType])
-                    print(f'id {args.id} cannot be set. You need to provide it in the correct format {valueFormat}',
-                          file=sys.stderr)
+                    element.value = args.value
+                except ValueError as valueError:
+                    print(f'id {args.id} cannot be set: {valueError}', file=sys.stderr)
                     sys.exit(-1)
                 except NotImplementedError:
                     print(f'id {args.id} cannot be set. You can see all changeable entries with "list -s"',

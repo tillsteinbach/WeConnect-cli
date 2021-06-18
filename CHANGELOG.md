@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - no changes so far
 
+## [0.6.2] - 2021-06-18
+### Fixes
+- Small bugfixes by updating API to 0.6.2
+
 ## [0.6.1] - 2021-06-13
 ### Fixes
 - Fixes bug in observer by updating API to 0.6.1 (fixes #2)
@@ -74,7 +78,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.6.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.6.2..HEAD
+[0.6.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.6.2
 [0.6.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.6.1
 [0.6.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.6.0
 [0.5.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.5.4

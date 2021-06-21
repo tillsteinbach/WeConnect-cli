@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - no changes so far
 
+## [0.8.1] - 2021-06-21
+### Fixed
+- Wrong error message containing unused attribute
+
 ## [0.8.0] - 2021-06-21
 ### Added
 - Support for chargeMode attribute by increasing API version to 0.8.0
@@ -86,7 +90,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.8.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.8.1..HEAD
+[0.8.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.8.1
 [0.8.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.8.0
 [0.7.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.7.0
 [0.6.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.6.2

@@ -2,7 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-- no changes so far
+### Changed
+- Update API to 0.10.0 to use access token instead of id token
 
 ## [0.8.2] - 2021-06-21
 ### Fixed

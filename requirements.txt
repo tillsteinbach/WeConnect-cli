@@ -1,1 +1,1 @@
-weconnect==0.9.0
+weconnect==0.10.0.dev1

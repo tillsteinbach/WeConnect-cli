@@ -2,8 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.9.0] - 2021-06-28
 ### Changed
 - Update API to 0.10.0 to use access token instead of id token
+- More robust on connection problems with WeConnect servers
 
 ## [0.8.2] - 2021-06-21
 ### Fixed
@@ -96,7 +99,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.8.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.9.0..HEAD
+[0.9.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.9.0
 [0.8.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.8.2
 [0.8.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.8.1
 [0.8.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.8.0

@@ -141,15 +141,16 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
         else:
             weConnect.fillCacheFromJson(args.cachefile, maxAge=args.interval)
 
-        latitude, longitude = args.chargingLocation
-        if latitude < -90 or latitude > 90:
-            LOG.error('latitude must be between -90 and 90')
-            sys.exit(1)
-        if longitude < -180 or longitude > 180:
-            LOG.error('longitude must be between -180 and 180')
-            sys.exit(1)
-        weConnect.latitude = latitude
-        weConnect.longitude = longitude
+        if args.chargingLocation is not None:
+            latitude, longitude = args.chargingLocation
+            if latitude < -90 or latitude > 90:
+                LOG.error('latitude must be between -90 and 90')
+                sys.exit(1)
+            if longitude < -180 or longitude > 180:
+                LOG.error('longitude must be between -180 and 180')
+                sys.exit(1)
+            weConnect.latitude = latitude
+            weConnect.longitude = longitude
         weConnect.searchRadius = args.chargingLocationRadius
 
         if args.command == 'shell':

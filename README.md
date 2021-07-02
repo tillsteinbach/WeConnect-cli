@@ -66,6 +66,34 @@ weconnect-cli --username user@mail.de --password test123 events
 2021-05-26 16:49:58.698980: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/frontLeft/lockState: new value: unlocked
 2021-05-26 16:49:58.699056: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/frontLeft/openState: new value: closed
 ```
+### Charging Stations
+To obtain data for charging stations you have to add a location to search for in geo coordinates and a search radius in meters:
+```bash
+weconnect-cli -l 52.437132 10.796628 --chargingLocationRadius=500 get /chargingStations
+ID:                  40a4b8d3-d534-422c-9cd8-81bbfa5b578f
+Name:                VW Group Oebisfelder Straße Parkhaus Ost
+Operator:            VW Group (Id: edd03be9-2df7-4fe3-be32-1573ba91aac0)
+Latitude:            52.4370178
+Longitude:           10.7977292
+Distance:            76m
+Address:             Oebisfelder Straße 1, 38448 Wolfsburg, Deutschland
+Max. Charging Power: 50.0kW
+Charging Spots: 2 items
+	Availability: OCCUPIED
+	Max. Charging Power: 22.0kW
+	Connectors: 1 items
+		Plug Type: Type2
+		Max. Charging Power: 22.0kW
+
+	Availability: AVAILABLE
+	Max. Charging Power: 50.0kW
+	Connectors: 1 items
+		Plug Type: CCS
+		Max. Charging Power: 50.0kW
+
+Authentification:    RFID, APP, UNKNOWN, UNKNOWN
+Options:             weCharge partner;
+```
 ### Interactive Shell
 You can also use an interactive shell:
 ```

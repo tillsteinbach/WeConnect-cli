@@ -68,6 +68,10 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                         default=defaultCacheTemp)
     parser.add_argument('-i', '--interval', help='Query interval in seconds, used for cache and events',
                               type=NumberRangeArgument(1), required=False, default=300)
+    parser.add_argument('-l', '--chargingLocation', nargs=2, metavar=('latitude', 'longitude'), type=float,
+                        help='If set charging locations will be added to the result around the given coordinates')
+    parser.add_argument('--chargingLocationRadius', type=NumberRangeArgument(0, 100000),
+                        help='Radius in meters around the chargingLocation to search for chargers')
 
     parser.set_defaults(command='shell')
 
@@ -136,6 +140,17 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             weConnect.login()
         else:
             weConnect.fillCacheFromJson(args.cachefile, maxAge=args.interval)
+
+        latitude, longitude = args.chargingLocation
+        if latitude < -90 or latitude > 90:
+            LOG.error('latitude must be between -90 and 90')
+            sys.exit(1)
+        if longitude < -180 or longitude > 180:
+            LOG.error('longitude must be between -180 and 180')
+            sys.exit(1)
+        weConnect.latitude = latitude
+        weConnect.longitude = longitude
+        weConnect.searchRadius = args.chargingLocationRadius
 
         if args.command == 'shell':
             try:

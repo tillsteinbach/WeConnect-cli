@@ -69,7 +69,7 @@ weconnect-cli --username user@mail.de --password test123 events
 ### Charging Stations
 To obtain data for charging stations you have to add a location to search for in geo coordinates and a search radius in meters:
 ```bash
-weconnect-cli -l 52.437132 10.796628 --chargingLocationRadius=500 get /chargingStations
+weconnect-cli --chargingLocation 52.437132 10.796628 --chargingLocationRadius=500 get /chargingStations
 ID:                  40a4b8d3-d534-422c-9cd8-81bbfa5b578f
 Name:                VW Group Oebisfelder Straße Parkhaus Ost
 Operator:            VW Group (Id: edd03be9-2df7-4fe3-be32-1573ba91aac0)

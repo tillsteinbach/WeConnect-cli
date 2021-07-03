@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.10.2] - 2021-07-03
+### Fixed
+- Bug with addresses fixed in API 0.11.1
+### Changed
+- Update API to 0.11.1 to use charging station data
+
 ## [0.10.1] - 2021-07-02
 ### Fixed
 - Bug when no location is provided
@@ -111,7 +117,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.10.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.10.2..HEAD
+[0.10.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.10.2
 [0.10.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.10.1
 [0.10.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.10.0
 [0.9.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.9.0

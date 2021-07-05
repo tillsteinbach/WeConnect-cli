@@ -111,7 +111,7 @@ user@mail.de@weconnect-sh:/vehicles/WVWABCE13SD057505/status/parkingPosition$ ca
 [parkingPosition] (last captured 2021-06-01T19:05:04+00:00)
 	Latitude: 51.674535
 	Longitude: 16.154376
-user@mail.de@weconnect-sh:/vehicles/WVWZZZ3CZME112096/status/parkingPosition$ exit
+user@mail.de@weconnect-sh:/vehicles/WVWABCE13SD057505/status/parkingPosition$ exit
 Bye
 ```
 ### Caching
@@ -125,6 +125,40 @@ login test@test.de
 password testpassword123
 ```
 You can also provide the location of the netrc file using the --netrc option
+
+### Images
+You can also work with images from the API
+Either you have a look at the commandline
+```
+weconnect-cli get /vehicles/WVWABCE13SD057505/pictures/car
+                                     zjo]?![[[[]!!??I*{{rlllcc?uzo7zjjuunT#Jwfy25Fmd
+                                *JywJ##TTuua]1t7LLjLLLjz7ot[Ir]att11[[aaeeeeoooeozjzet[>
+                             1T2p6p5Fmh4Jeut1eoeLT#nL1ou##jeLne]!]!1j[[][[[[[]]I}I][1tee?
+                         =[nypmqgdXbbYgzaTuTfzI}}}I!t}jTwjjJL}llllc}Tz?I*}}*****ssr*}}I[1[l
+                     rcsoCF6pmgddVhgg6aaCL1##1IIIIII}!ettTwt%%v%cr?]{eI{v%cccllrrrsr*I??aw!}
+              Q@GEVgqTnw2yw##TTuuLjj7oaat[]!?IIIIII??!!!7nt{>="i%c{![oea[[taeeeeeeet1eeeetta]i
+        a7uJCJ#nLjz7ot1]!?II}**{{srlllrs*}}}}}I?]1e7juLLLLzL1%}1[11teat!rI?I*{srlccvccls{{srri:
+    ufzx%lrcv)<\)||"""""|||)\\<<>)%l{**{rs}[7u#TuLz77zjuTL7]I{lx%vi><<\)ii\\\\\\\\\<>>%rss*{cv"
+  Ypje{cx%%%%%%v%xxxcccllrs{*?[ezLuTJwf36dGdFw6Vg#Ii\\)xlxi|///////////////////////++++;_'^\v)"
+  Y&&F7t!I!?!?t1jt[[1ttttaju5hggV&DkgpdBDXSo}?ttr";:_..-^"|/==^^^^^^^^^;^;;;;;;;;;;;;^">i|__/\/
+ #L#e]1*%v%ii\v<\>>ii%v%xclI1e1ajhZFuo#hS#[II*v/)l***c\,`:^^;;;;;;;;;;;;;^^^^==++/=,;/%s][c:;=^
+33]||vrr***{*{{rxllrrrrrsrlrllrs{{{{***}I?}r%<"%r1}]ts]{\_;;;===++////""""""||||||/;^){s![!\"}r
+]z}i:,:\EGPE6q6VE44d};^==^^=+/"|\ir*?!1tsc)|/=c1?*I]![[?{\,+""/////""|)\<>)vxcrs{***>)!?*}[%{oe
+=/"\=^'^t77joo7nJwfyc_'::^+""|)\>%}????#a=""+/!I!*r1nIs!tv|<vxlr{*}I??!???}*{rlxv)<|^|]u{}7%?
+>wt)=+^_-` `. .   . ._``://"/""|)\)ls{}!d{;\i%]!aos{e[*e7vl**{srlc%%vii))>><<\\/^;^^=/%1!oI"
+ Ewz[><<<<<>)%{{srcv)v))vlrsrrrlll*e7zz7ei)I]{Ia71e{}IjT?)^;,:'_-`.              -^+///>xi/
+   .g `:;==/\l[1[I%<)""""+///"||)|+====+="||/"v?l*e]]nf?|`                         `_:,'-
+        `_''''':'_.                       -;+|\<vs*?Ic<^
+                                            `:^^^=+=^:
+```
+but it makes more sense to save the image to a file: 
+```bash
+weconnect-cli save /vehicles/WVWABCE13SD057505/pictures/car car.png
+ls -alh car.png
+-rw-r--r--  1 tillsteinbach  staff   135K  5 Jul 15:07 car.png
+```
+If there is information regarding door, light and window status provided for your car you can also use the 'status' picture
+
 ## Tested with
 - Volkswagen ID.3 Modelyear 2021
 - Volkswagen Passat GTE Modelyear 2021

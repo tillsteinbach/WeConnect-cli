@@ -9,6 +9,8 @@ import time
 import tempfile
 import cmd
 
+import ascii_magic
+
 from weconnect import weconnect, addressable, errors
 
 from .__version import __version__
@@ -72,6 +74,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                         help='If set charging locations will be added to the result around the given coordinates')
     parser.add_argument('--chargingLocationRadius', type=NumberRangeArgument(0, 100000),
                         help='Radius in meters around the chargingLocation to search for chargers')
+    parser.add_argument('--no-capabilities', dest='noCapabilities', help='Do not add capabilities', action='store_true')
+    parser.add_argument('--no-pictures', dest='noPictures', help='Do not add pictures', action='store_true')
 
     parser.set_defaults(command='shell')
 
@@ -83,10 +87,14 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     parserGet = subparsers.add_parser('get', aliases=['g'], help='Get ressources by id and exit')
     parserGet.add_argument('id', metavar='ID', type=str, help='Id to fetch')
     parserGet.set_defaults(command='get')
-    parserGet = subparsers.add_parser('set', aliases=['s'], help='Set ressources by id and exit')
-    parserGet.add_argument('id', metavar='ID', type=str, help='Id to set')
-    parserGet.add_argument('value', metavar='VALUE', type=str, help='Value to set')
-    parserGet.set_defaults(command='set')
+    parserSet = subparsers.add_parser('set', aliases=['s'], help='Set ressources by id and exit')
+    parserSet.add_argument('id', metavar='ID', type=str, help='Id to set')
+    parserSet.add_argument('value', metavar='VALUE', type=str, help='Value to set')
+    parserSet.set_defaults(command='set')
+    parserSave = subparsers.add_parser('save', help='Save ressources by id to file')
+    parserSave.add_argument('id', metavar='ID', type=str, help='Id to save')
+    parserSave.add_argument('filename', metavar='FILENAME', type=str, help='File to save to')
+    parserSave.set_defaults(command='save')
     parserEvents = subparsers.add_parser(
         'events', aliases=['e'], help='Continously retrieve events and show on console')
     parserEvents.set_defaults(command='events')
@@ -100,6 +108,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
         logLevel = min(len(LOG_LEVELS) - 1, max(logLevel + adjustment, 0))
 
     logging.basicConfig(level=LOG_LEVELS[logLevel])
+
+    ascii_magic.init_terminal()
 
     username = None
     password = None
@@ -155,14 +165,14 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
 
         if args.command == 'shell':
             try:
-                weConnect.update()
+                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noCapabilities))
                 # disable caching
                 weConnect.clearCache(maxAge=None)
-                WeConnectShell(weConnect).cmdloop()
+                WeConnectShell(weConnect, noCapabilities=args.noCapabilities, noPictures=args.noCapabilities).cmdloop()
             except KeyboardInterrupt:
                 pass
         elif args.command == 'list':
-            weConnect.update()
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
             allElements = weConnect.getLeafChildren()
             for element in allElements:
                 if args.setters:
@@ -171,7 +181,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 else:
                     print(element.getGlobalAddress())
         elif args.command == 'get':
-            weConnect.update()
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
             element = weConnect.getByAddressString(args.id)
             if element:
                 if isinstance(element, dict):
@@ -182,7 +192,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 print(f'id {args.id} not found', file=sys.stderr)
                 sys.exit(-1)
         elif args.command == 'set':
-            weConnect.update()
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
             element = weConnect.getByAddressString(args.id)
             if element:
                 try:
@@ -196,6 +206,21 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                     sys.exit(-1)
                 except errors.SetterError as err:
                     print(f'id {args.id} cannot be set: %s', err, file=sys.stderr)
+                    sys.exit(-1)
+            else:
+                print(f'id {args.id} not found', file=sys.stderr)
+                sys.exit(-1)
+        elif args.command == 'save':
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
+            element = weConnect.getByAddressString(args.id)
+            if element:
+                try:
+                    element.saveToFile(args.filename)
+                except ValueError as valueError:
+                    print(f'id {args.id} cannot be saved: {valueError}', file=sys.stderr)
+                    sys.exit(-1)
+                except AttributeError:
+                    print(f'id {args.id} cannot be saved', file=sys.stderr)
                     sys.exit(-1)
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
@@ -221,7 +246,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             weConnect.addObserver(observer, addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED,
                                   priority=addressable.AddressableLeaf.ObserverPriority.USER_MID)
             while True:
-                weConnect.update()
+                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
                 time.sleep(args.interval)
         else:
             LOG.error('command not implemented')
@@ -243,9 +268,12 @@ class WeConnectShell(cmd.Cmd):
     prompt = 'error'
     intro = "Welcome! Type ? to list commands"
 
-    def __init__(self, weConnect, completekey='tab', stdin=None, stdout=None,):
+    def __init__(self, weConnect, completekey='tab', stdin=None, stdout=None, noCapabilities=False, noPictures=False):
         self.weconnect = weConnect
         self.pwd = weConnect
+        self.noCapabilities = noCapabilities
+        self.noPictures = noPictures
+
         super().__init__(completekey=completekey, stdin=stdin, stdout=stdout)
         self.setPrompt(self.weconnect.getGlobalAddress())
 
@@ -316,7 +344,7 @@ class WeConnectShell(cmd.Cmd):
 
     def do_update(self, arguments):
         del arguments
-        self.weconnect.update()
+        self.weconnect.update(updateCapabilities=(not self.noCapabilities), updatePictures=(not self.noPictures))
         print('update done')
 
     def help_cat(self):  # pylint: disable=no-self-use

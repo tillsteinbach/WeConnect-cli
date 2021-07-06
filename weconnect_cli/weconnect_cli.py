@@ -146,7 +146,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     try:  # pylint: disable=too-many-nested-blocks
         weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
                                         updateAfterLogin=False, loginOnInit=False, updateCapabilities=(not args.noCapabilities),
-                                        updatePictures=(not args.noCapabilities))
+                                        updatePictures=(not args.noPictures))
         if args.noCache or not os.path.isfile(args.cachefile):
             weConnect.login()
         else:
@@ -166,10 +166,10 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
 
         if args.command == 'shell':
             try:
-                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noCapabilities))
+                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
                 # disable caching
                 weConnect.clearCache(maxAge=None)
-                WeConnectShell(weConnect, noCapabilities=args.noCapabilities, noPictures=args.noCapabilities).cmdloop()
+                WeConnectShell(weConnect, noCapabilities=args.noCapabilities, noPictures=args.noPictures).cmdloop()
             except KeyboardInterrupt:
                 pass
         elif args.command == 'list':

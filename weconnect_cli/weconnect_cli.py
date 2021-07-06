@@ -145,7 +145,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
 
     try:  # pylint: disable=too-many-nested-blocks
         weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
-                                        updateAfterLogin=False, loginOnInit=False)
+                                        updateAfterLogin=False, loginOnInit=False, updateCapabilities=(not args.noCapabilities),
+                                        updatePictures=(not args.noCapabilities))
         if args.noCache or not os.path.isfile(args.cachefile):
             weConnect.login()
         else:

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.11.3] - 2021-07-18
+### Fixed
+- Fixed crash due to new elements in the WeConnect API
+
 ## [0.11.2] - 2021-07-06
 ### Fixed
 - Fixed --no-pictures argument
@@ -129,7 +133,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.11.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.11.3..HEAD
+[0.11.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.11.3
 [0.11.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.11.2
 [0.11.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.11.1
 [0.11.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.11.0

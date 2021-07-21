@@ -17,7 +17,7 @@ If you want to query data from weconnect you can use this command line interface
 You need to install python 3 on your system: [How to install python](https://realpython.com/installing-python/)
 
 ### Login & Consent
-WeConnect-mqtt is based on the new WeConnect ID API that was introduced with the new series of ID cars. If you use another car or hybrid you probably need to agree to the terms and conditions of the WeConnect ID interface. Easiest to do so is by installing the WeConnect ID app on your smartphone and login there. If necessary you will be asked to agree to the terms and conditions.
+WeConnect-cli is based on the new WeConnect ID API that was introduced with the new series of ID cars. If you use another car or hybrid you probably need to agree to the terms and conditions of the WeConnect ID interface. Easiest to do so is by installing the WeConnect ID app on your smartphone and login there. If necessary you will be asked to agree to the terms and conditions.
 
 ## How to install
 If you want to use WeConnect-cli, the easiest way is to obtain it from [PyPI](https://pypi.org/project/weconnect-cli/). Just install instead using:

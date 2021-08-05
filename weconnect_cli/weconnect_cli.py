@@ -12,6 +12,7 @@ import cmd
 import ascii_magic
 
 from weconnect import weconnect, addressable, errors
+from weconnect.__version import __version__ as __weconnect_version__
 
 from .__version import __version__
 
@@ -52,7 +53,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
         prog='weconnect-cli',
         description='Commandline Interface to interact with the Volkswagen WeConnect Services')
     parser.add_argument('--version', action='version',
-                        version='%(prog)s {version}'.format(version=__version__))
+                        version='%(prog)s {version} (using WeConnect-python {weversion})'.format(version=__version__, weversion=__weconnect_version__))
     parser.add_argument('-u', '--username', help='Username of Volkswagen id', required=False)
     parser.add_argument('-p', '--password', help='Password of Volkswagen id', required=False)
     defaultNetRc = os.path.join(os.path.expanduser("~"), ".netrc")

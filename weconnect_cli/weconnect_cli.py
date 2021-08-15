@@ -71,6 +71,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                         default=defaultCacheTemp)
     parser.add_argument('-i', '--interval', help='Query interval in seconds, used for cache and events',
                               type=NumberRangeArgument(1), required=False, default=300)
+    parser.add_argument('--picture-cache-interval', dest='pictureCache', help='Picture download interval in seconds, this does not influence the interval in'
+                        ' which the status picture is updated', type=NumberRangeArgument(1), required=False, default=86400)
     parser.add_argument('-l', '--chargingLocation', nargs=2, metavar=('latitude', 'longitude'), type=float,
                         help='If set charging locations will be added to the result around the given coordinates')
     parser.add_argument('--chargingLocationRadius', type=NumberRangeArgument(0, 100000),
@@ -151,7 +153,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
         if args.noCache or not os.path.isfile(args.cachefile):
             weConnect.login()
         else:
-            weConnect.fillCacheFromJson(args.cachefile, maxAge=args.interval)
+            weConnect.fillCacheFromJson(args.cachefile, maxAge=args.interval, maxAgePictures=args.pictureCache)
 
         if args.chargingLocation is not None:
             latitude, longitude = args.chargingLocation
@@ -169,7 +171,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             try:
                 weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
                 # disable caching
-                weConnect.clearCache(maxAge=None)
+                weConnect.maxAge = None
+                weConnect.clearCache()
                 WeConnectShell(weConnect, noCapabilities=args.noCapabilities, noPictures=args.noPictures).cmdloop()
             except KeyboardInterrupt:
                 pass

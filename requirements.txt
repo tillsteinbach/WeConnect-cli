@@ -1,2 +1,2 @@
-weconnect==0.19.1
+weconnect==0.19.2
 ascii_magic>=1.5.5

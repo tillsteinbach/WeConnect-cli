@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.14.2] - 2021-08-20
+### Fixed
+- Fixed bad gateway error with parking position when car is driving
+
+### Changed
+- API version to 19.2
+
 ## [0.14.1] - 2021-08-19
 ### Fixed
 - Parking position after weconnect API change
@@ -191,7 +198,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.2..HEAD
+[0.14.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.2
 [0.14.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.1
 [0.14.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.0
 [0.13.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.13.2

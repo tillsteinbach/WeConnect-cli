@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.14.7] - 2021-09-02
+### Fixed
+- Fixed UnboundLocalError in condition GDC_MISSING
+
+### Changed
+- API version to 20.5
+
 ## [0.14.6] - 2021-09-01
 ### Fixed
 - typing error on python 3.7
@@ -231,7 +238,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.6..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.7..HEAD
+[0.14.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.7
 [0.14.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.6
 [0.14.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.5
 [0.14.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.4

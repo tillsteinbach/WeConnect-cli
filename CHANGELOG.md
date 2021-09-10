@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.14.9] - 2021-09-10
+### Fixed
+- Fix if range is corrupted
+
 ## [0.14.8] - 2021-09-02
 ### Fixed
 - Allow forbidden (403) return code for parking position
@@ -246,7 +250,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.8..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.9..HEAD
+[0.14.9]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.9
 [0.14.8]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.8
 [0.14.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.7
 [0.14.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.6

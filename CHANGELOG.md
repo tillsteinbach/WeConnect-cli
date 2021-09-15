@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.14.10] - 2021-09-15
+### Added
+- Will retry a request 3 times to try to make instable server connection more stable
+
+### Fixed
+- Problem when token could not be refreshed
+
+### Changed
+- API updated to 0.20.10
+
 ## [0.14.9] - 2021-09-10
 ### Fixed
 - Fix if range is corrupted
@@ -250,7 +260,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.9..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.10..HEAD
+[0.14.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.10
 [0.14.9]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.9
 [0.14.8]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.8
 [0.14.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.7

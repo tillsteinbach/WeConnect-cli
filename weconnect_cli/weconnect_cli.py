@@ -14,7 +14,7 @@ import ascii_magic
 from weconnect import weconnect, addressable, errors
 from weconnect.__version import __version__ as __weconnect_version__
 
-from .__version import __version__
+from weconnect_cli.__version import __version__
 
 LOG_LEVELS = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 DEFAULT_LOG_LEVEL = "ERROR"

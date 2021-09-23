@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.14.12] - 2021-09-23
+### Fixed
+- Fixed problems coming from changes in the API
+
+### Added
+- New images with badges
+- New attributes: odometerMeasurement, rangeMeasurements, unitInCar, targetTemperature_F
+
+### Changed
+- API updated to 0.20.12
+
 ## [0.14.11] - 2021-09-16
 ### Fixed
 - Fixes previous release that did not take new exceptions into account
@@ -264,7 +275,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.11..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.12..HEAD
+[0.14.12]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.12
 [0.14.11]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.11
 [0.14.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.10
 [0.14.9]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.9

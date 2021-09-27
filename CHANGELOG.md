@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.14.13] - 2021-09-27
+### Fixed
+- Fixed resetting of parkingposition while driving
+
+### Added
+- New attributes: electricRange, gasolineRange
+
+### Changed
+- API updated to 0.20.14
+
 ## [0.14.12] - 2021-09-23
 ### Fixed
 - Fixed problems coming from changes in the API
@@ -275,7 +285,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.12..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.13..HEAD
+[0.14.13]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.13
 [0.14.12]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.12
 [0.14.11]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.11
 [0.14.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.10

@@ -28,7 +28,7 @@ setup(
     install_requires=INSTALL_REQUIRED,
     entry_points={
         'console_scripts': [
-            'weconnect-cli = weconnect_cli.weconnect_cli:main',
+            'weconnect-cli = weconnect_cli.weconnect_cli_base:main',
         ],
     },
     classifiers=[

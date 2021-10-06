@@ -79,6 +79,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                         help='Radius in meters around the chargingLocation to search for chargers')
     parser.add_argument('--no-capabilities', dest='noCapabilities', help='Do not add capabilities', action='store_true')
     parser.add_argument('--no-pictures', dest='noPictures', help='Do not add pictures', action='store_true')
+    parser.add_argument('--elapsed-statistics', dest='elapsedStatistics', help='Statistics over server response times', action='store_true')
 
     parser.set_defaults(command='shell')
 
@@ -260,12 +261,20 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             weConnect.persistTokens()
         if not args.noCache:
             weConnect.persistCacheAsJson(args.cachefile)
+        if args.elapsedStatistics:
+            print(f'Minimum response time {weConnect.getMinElapsed()}')
+            print(f'Average response time {weConnect.getAvgElapsed()}')
+            print(f'Maximum response time {weConnect.getMaxElapsed()}')
+            print(f'Total response time {weConnect.getTotalElapsed()}')
     except errors.AuthentificationError as e:
         LOG.critical('There was a problem when authenticating with WeConnect: %s', e)
         sys.exit(-1)
     except errors.APICompatibilityError as e:
         LOG.critical('There was a problem when communicating with WeConnect.'
                      ' If this problem persists please open a bug report: %s', e)
+        sys.exit(-1)
+    except errors.RetrievalError as e:
+        LOG.critical('There was a problem when communicating with WeConnect: %s', e)
         sys.exit(-1)
 
 

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.15.0] - 2021-10-06
+### Added
+- Statistics about retrieval times
+
+### Fixed
+- Climate settings and start stop
+
+### Changed
+- Updated API to 0.21.0
+
 ## [0.14.14] - 2021-09-28
 ### Fixed
 - Fixed badges
@@ -289,7 +299,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.14.14..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.15.0..HEAD
+[0.15.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.0
 [0.14.14]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.14
 [0.14.13]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.13
 [0.14.12]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.12

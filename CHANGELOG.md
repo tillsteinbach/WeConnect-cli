@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.15.2] - 2021-10-22
+### Fixed
+- Fix badge for unlocked vehicle
+- Fixes return None for elapsed statistics if no statistics are available
+- Fixes picture caching
+- Will delete cache file if cache is corrupted
+
+### Changed
+- Updated API to 0.21.5
+
 ## [0.15.1] - 2021-10-06
 ### Fixed
 - Will delete cache file if cache is corrupted

@@ -316,7 +316,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.15.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.15.2..HEAD
+[0.15.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.2
 [0.15.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.1
 [0.15.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.0
 [0.14.14]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.14.14

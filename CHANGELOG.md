@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.15.4] - 2021-11-04
+### Changed
+- Updated API to 0.22.1
+
 ## [0.15.3] - 2021-11-01
 ### Changed
 - Updated API to 0.22.0
@@ -320,7 +324,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.15.3..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.15.4..HEAD
+[0.15.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.4
 [0.15.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.3
 [0.15.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.2
 [0.15.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.1

@@ -1,2 +1,2 @@
-weconnect~=0.23.0
+weconnect~=0.23.1
 ascii_magic~=1.6

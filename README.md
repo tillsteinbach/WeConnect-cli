@@ -175,3 +175,6 @@ Please feel free to open an issue at [GitHub Issue page](https://github.com/till
 ## Related Projects:
 - [WeConnect-MQTT](https://github.com/tillsteinbach/WeConnect-mqtt): MQTT Client that publishes data from Volkswagen WeConnect
 - [WeConnect-python](https://github.com/tillsteinbach/WeConnect-python): Python API to connect to Volkswagen WeConnect Services
+
+## Seat, Cupra, Skoda IV, ...
+In an effort to try to make WeConnect-cli also to work with latest generation of vehicles from other volkswagen brands I'm looking for users to temporarily share access to their accounts. If you are willing to support please send me a message.

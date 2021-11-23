@@ -56,7 +56,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                         version=f'%(prog)s {__version__} (using WeConnect-python {__weconnect_version__})')
     parser.add_argument('-u', '--username', help='Username of Volkswagen id', required=False)
     parser.add_argument('-p', '--password', help='Password of Volkswagen id', required=False)
-    parser.add_argument('-b', '--brand', help='Brand if other (e.g. seat)', required=False, type=weconnect.WeConnect.Brand, choices=list(weconnect.WeConnect.Brand), default=weconnect.WeConnect.Brand.VW)
+    parser.add_argument('-b', '--brand', help='Brand if other (e.g. seat)', required=False, type=weconnect.WeConnect.Brand,
+                        choices=list(weconnect.WeConnect.Brand), default=weconnect.WeConnect.Brand.VW)
     defaultNetRc = os.path.join(os.path.expanduser("~"), ".netrc")
     parser.add_argument('--netrc', help=f'File in netrc syntax providing login (default: {defaultNetRc}).'
                         ' Netrc is only used when username and password are not provided  as arguments',

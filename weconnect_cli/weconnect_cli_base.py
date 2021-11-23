@@ -56,6 +56,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                         version=f'%(prog)s {__version__} (using WeConnect-python {__weconnect_version__})')
     parser.add_argument('-u', '--username', help='Username of Volkswagen id', required=False)
     parser.add_argument('-p', '--password', help='Password of Volkswagen id', required=False)
+    parser.add_argument('-b', '--brand', help='Brand if other (e.g. seat)', required=False, type=weconnect.WeConnect.Brand, choices=list(weconnect.WeConnect.Brand), default=weconnect.WeConnect.Brand.VW)
     defaultNetRc = os.path.join(os.path.expanduser("~"), ".netrc")
     parser.add_argument('--netrc', help=f'File in netrc syntax providing login (default: {defaultNetRc}).'
                         ' Netrc is only used when username and password are not provided  as arguments',
@@ -128,7 +129,10 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             netRcFilename = defaultNetRc
         try:
             secrets = netrc.netrc(file=args.netrc)
-            username, _, password = secrets.authenticators("volkswagen.de")
+            authenticatorString = 'volkswagen.de'
+            if args.brand == weconnect.WeConnect.Brand.SEAT:
+                authenticatorString = 'my.seat'
+            username, _, password = secrets.authenticators(authenticatorString)
         except TypeError:
             if not args.username:
                 LOG.error('volkswagen.de entry was not found in %s netrc-file. Create it or provide at least a username'
@@ -150,7 +154,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     try:  # pylint: disable=too-many-nested-blocks
         weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
                                         updateAfterLogin=False, loginOnInit=False, updateCapabilities=(not args.noCapabilities),
-                                        updatePictures=(not args.noPictures))
+                                        updatePictures=(not args.noPictures), brand=args.brand)
         if args.noCache or not os.path.isfile(args.cachefile):
             weConnect.login()
         else:

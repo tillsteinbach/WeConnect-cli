@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.17.0] - 2021-11-25
+### Added
+- Add new Charging State CHARGE_PURPOSE_REACHED_CONSERVATION
+
+### Changed
+- Updated API to 0.24.0
+
 ## [0.16.1] - 2021-11-19
 ### Fixed
 - Corrected addressing of climatization timers
@@ -338,7 +345,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.16.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.17.0..HEAD
+[0.17.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.17.0
 [0.16.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.16.1
 [0.16.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.16.0
 [0.15.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.15.4

@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.18.0] - 2021-12-01
+### Added
+- Add new status fail_battery_low
+- Add new attributes readinessStatus, readinessBatterySupportStatus and devicePlatform
+
+### Changed
+- Updated API to 0.25.0
+
 ## [0.17.0] - 2021-11-25
 ### Added
 - Add new Charging State CHARGE_PURPOSE_REACHED_CONSERVATION
@@ -345,7 +353,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.17.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.18.0..HEAD
+[0.18.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.18.0
 [0.17.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.17.0
 [0.16.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.16.1
 [0.16.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.16.0

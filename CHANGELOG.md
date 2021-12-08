@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.19.0] - 2021-12-08
+### Added
+- Add new gasoline car type
+
 ## [0.18.1] - 2021-12-01
 ### Fixed
 - Fixed missing readiness_status module
@@ -359,7 +363,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.18.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.19.0..HEAD
+[0.19.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.19.0
 [0.18.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.18.1
 [0.18.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.18.0
 [0.17.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.17.0

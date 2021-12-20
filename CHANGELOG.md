@@ -4,8 +4,17 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.20.0] - 2021-12-20
+### Added
+- decoding of capability status
+- new charge modes
+- new plug states
+- new engine and car types
+- new status capabilitiesStatus
+
 ### Changed
-- Updated API to 0.27.0
+- Only fetch parking position if the capability is enabled
+- Updated API to 0.28.0
 
 ## [0.19.0] - 2021-12-08
 ### Added
@@ -366,7 +375,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.19.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.20.0..HEAD
+[0.20.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.20.0
 [0.19.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.19.0
 [0.18.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.18.1
 [0.18.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.18.0

@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ## [0.21.0] - 2022-01-05
 ### Changed
-- *** Warning, the addresses of attributes changed due to conflicts within the status names from recent changes at WeConnect ***
+- ***Warning, the addresses of attributes changed due to conflicts within the status names from recent changes at WeConnect***
 - API is using new url enpoints now
 - Updated API to 0.29.0
 

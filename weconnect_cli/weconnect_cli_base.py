@@ -11,7 +11,7 @@ import cmd
 
 import ascii_magic
 
-from weconnect import weconnect, addressable, errors
+from weconnect import weconnect, addressable, errors, util
 from weconnect.__version import __version__ as __weconnect_version__
 
 from weconnect_cli.__version import __version__
@@ -54,13 +54,12 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
         description='Commandline Interface to interact with the Volkswagen WeConnect Services')
     parser.add_argument('--version', action='version',
                         version=f'%(prog)s {__version__} (using WeConnect-python {__weconnect_version__})')
-    parser.add_argument('-u', '--username', help='Username of Volkswagen id', required=False)
-    parser.add_argument('-p', '--password', help='Password of Volkswagen id', required=False)
+    weConnectGroup = parser.add_argument_group('WeConnect')
+    weConnectGroup.add_argument('-u', '--username', help='Username of Volkswagen id', required=False)
+    weConnectGroup.add_argument('-p', '--password', help='Password of Volkswagen id', required=False)
     defaultNetRc = os.path.join(os.path.expanduser("~"), ".netrc")
-    parser.add_argument('--netrc', help=f'File in netrc syntax providing login (default: {defaultNetRc}).'
-                        ' Netrc is only used when username and password are not provided  as arguments',
-                        default=None, required=False)
-    parser.add_argument('-v', '--verbose', action="append_const", const=-1,)
+    weConnectGroup.add_argument('--netrc', help=f'File in netrc syntax providing login (default: {defaultNetRc}).'
+                                ' Netrc is only used when username and password are not provided  as arguments', default=None, required=False)
     parser.add_argument('--no-token-storage', dest='noTokenStorage', help='Do not store token on filesystem (this'
                         ' will cause a new login for every invokation!)', action='store_true')
     defaultTemp = os.path.join(tempfile.gettempdir(), 'weconnect.token')
@@ -69,17 +68,25 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     defaultCacheTemp = os.path.join(tempfile.gettempdir(), 'weconnect.cache')
     parser.add_argument('--cachefile', help=f'file to store cache (default: {defaultCacheTemp})',
                         default=defaultCacheTemp)
-    parser.add_argument('-i', '--interval', help='Query interval in seconds, used for cache and events',
-                              type=NumberRangeArgument(1), required=False, default=300)
-    parser.add_argument('--picture-cache-interval', dest='pictureCache', help='Picture download interval in seconds, this does not influence the interval in'
-                        ' which the status picture is updated', type=NumberRangeArgument(1), required=False, default=86400)
-    parser.add_argument('-l', '--chargingLocation', nargs=2, metavar=('latitude', 'longitude'), type=float,
-                        help='If set charging locations will be added to the result around the given coordinates')
-    parser.add_argument('--chargingLocationRadius', type=NumberRangeArgument(0, 100000),
-                        help='Radius in meters around the chargingLocation to search for chargers')
-    parser.add_argument('--no-capabilities', dest='noCapabilities', help='Do not add capabilities', action='store_true')
-    parser.add_argument('--no-pictures', dest='noPictures', help='Do not add pictures', action='store_true')
+    weConnectGroup.add_argument('-i', '--interval', help='Query interval in seconds, used for cache and events',
+                                type=NumberRangeArgument(1), required=False, default=300)
+    weConnectGroup.add_argument('--picture-cache-interval', dest='pictureCache', help='Picture download interval in seconds, this does not influence the'
+                                ' interval in which the status picture is updated', type=NumberRangeArgument(1), required=False, default=86400)
+    weConnectGroup.add_argument('-l', '--chargingLocation', nargs=2, metavar=('latitude', 'longitude'), type=float,
+                                help='If set charging locations will be added to the result around the given coordinates')
+    weConnectGroup.add_argument('--chargingLocationRadius', type=NumberRangeArgument(0, 100000),
+                                help='Radius in meters around the chargingLocation to search for chargers')
+    weConnectGroup.add_argument('--no-capabilities', dest='noCapabilities', help='Do not add capabilities', action='store_true')
+    weConnectGroup.add_argument('--no-pictures', dest='noPictures', help='Do not add pictures', action='store_true')
     parser.add_argument('--elapsed-statistics', dest='elapsedStatistics', help='Statistics over server response times', action='store_true')
+
+    loggingGroup = parser.add_argument_group('Logging')
+    loggingGroup.add_argument('-v', '--verbose', action="append_const", help='Logging level (verbosity)', const=-1,)
+    loggingGroup.add_argument('--logging-format', dest='loggingFormat', help='Logging format configured for python logging '
+                              '(default: %%(asctime)s:%%(module)s:%%(message)s)', default='%(asctime)s:%(levelname)s:%(message)s')
+    loggingGroup.add_argument('--logging-date-format', dest='loggingDateFormat', help='Logging format configured for python logging '
+                              '(default: %%Y-%%m-%%dT%%H:%%M:%%S%%z)', default='%Y-%m-%dT%H:%M:%S%z')
+    loggingGroup.add_argument('--hide-repeated-log', dest='hideRepeatedLog', help='Hide repeated log messages from the same module', action='store_true')
 
     parser.set_defaults(command='shell')
 
@@ -111,7 +118,10 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     for adjustment in args.verbose or ():
         logLevel = min(len(LOG_LEVELS) - 1, max(logLevel + adjustment, 0))
 
-    logging.basicConfig(level=LOG_LEVELS[logLevel])
+    logging.basicConfig(level=LOG_LEVELS[logLevel], format=args.loggingFormat, datefmt=args.loggingDateFormat)
+    if args.hideRepeatedLog:
+        for handler in logging.root.handlers:
+            handler.addFilter(util.DuplicateFilter())
 
     ascii_magic.init_terminal()
 

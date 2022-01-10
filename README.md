@@ -162,6 +162,10 @@ ls -alh car.png
 ```
 If there is information regarding door, light and window status provided for your car you can also use the 'status' picture
 
+### Disabling features
+You can disable data for the cars capabilities with `--no-capabilities`
+If you only need a subset of the data you can use the `--selective` option. E.g. `--selective climatisation`
+
 ## Tested with
 - Volkswagen ID.3 Modelyear 2021
 - Volkswagen Passat GTE Modelyear 2021

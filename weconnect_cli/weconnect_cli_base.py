@@ -11,7 +11,7 @@ import cmd
 
 import ascii_magic
 
-from weconnect import weconnect, addressable, errors, util
+from weconnect import weconnect, addressable, errors, util, domain
 from weconnect.__version import __version__ as __weconnect_version__
 
 from weconnect_cli.__version import __version__
@@ -78,6 +78,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                                 help='Radius in meters around the chargingLocation to search for chargers')
     weConnectGroup.add_argument('--no-capabilities', dest='noCapabilities', help='Do not add capabilities', action='store_true')
     weConnectGroup.add_argument('--no-pictures', dest='noPictures', help='Do not add pictures', action='store_true')
+    weConnectGroup.add_argument('--selective', help='Just fetch status of a certain type', default=None, required=False, action='append',
+                                type=domain.Domain, choices=list(domain.Domain))
     parser.add_argument('--elapsed-statistics', dest='elapsedStatistics', help='Statistics over server response times', action='store_true')
 
     loggingGroup = parser.add_argument_group('Logging')
@@ -160,7 +162,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     try:  # pylint: disable=too-many-nested-blocks
         weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
                                         updateAfterLogin=False, loginOnInit=False, updateCapabilities=(not args.noCapabilities),
-                                        updatePictures=(not args.noPictures))
+                                        updatePictures=(not args.noPictures), selective=args.selective)
         if args.noCache or not os.path.isfile(args.cachefile):
             weConnect.login()
         else:
@@ -180,7 +182,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
 
         if args.command == 'shell':
             try:
-                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
+                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
                 # disable caching
                 weConnect.maxAge = None
                 weConnect.clearCache()
@@ -188,7 +190,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             except KeyboardInterrupt:
                 pass
         elif args.command == 'list':
-            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
             allElements = weConnect.getLeafChildren()
             for element in allElements:
                 if args.setters:
@@ -197,7 +199,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 else:
                     print(element.getGlobalAddress())
         elif args.command == 'get':
-            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
             element = weConnect.getByAddressString(args.id)
             if element:
                 if isinstance(element, dict):
@@ -208,7 +210,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 print(f'id {args.id} not found', file=sys.stderr)
                 sys.exit(-1)
         elif args.command == 'set':
-            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
             element = weConnect.getByAddressString(args.id)
             if element:
                 try:
@@ -221,13 +223,13 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                           file=sys.stderr)
                     sys.exit(-1)
                 except errors.SetterError as err:
-                    print(f'id {args.id} cannot be set: %s', err, file=sys.stderr)
+                    print(f'id {args.id} cannot be set: {err}', file=sys.stderr)
                     sys.exit(-1)
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
                 sys.exit(-1)
         elif args.command == 'save':
-            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
+            weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
             element = weConnect.getByAddressString(args.id)
             if element:
                 try:
@@ -262,7 +264,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             weConnect.addObserver(observer, addressable.AddressableLeaf.ObserverEvent.VALUE_CHANGED,
                                   priority=addressable.AddressableLeaf.ObserverPriority.USER_MID)
             while True:
-                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures))
+                weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
                 time.sleep(args.interval)
         else:
             LOG.error('command not implemented')

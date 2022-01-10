@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.22.0] - 2022-01-10
+### Fixed
+- no-capabilities fixed
+
+### Added
+- selective option that allows to only fetch a subset of the data
+
+### Changed
+- Updated API to 0.30.0
+
 ## [0.21.0] - 2022-01-05
 ### Changed
 - ***Warning, the addresses of attributes changed due to conflicts within the status names from recent changes at WeConnect***
@@ -388,7 +398,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.21.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.0..HEAD
+[0.22.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.0
 [0.21.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.21.0
 [0.20.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.20.0
 [0.19.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.19.0

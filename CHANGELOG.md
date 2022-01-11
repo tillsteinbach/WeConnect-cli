@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.22.3] - 2022-01-11
+### Fixed
+- More robust against server errors
+- Hides status 204 on missing parking position
+
+### Changed
+- Updated API to 0.30.3
+
 ## [0.22.2] - 2022-01-10
 ### Fixed
 - timezone problem fixed
@@ -412,7 +420,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.3..HEAD
+[0.22.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.3
 [0.22.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.2
 [0.22.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.1
 [0.22.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.0

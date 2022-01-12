@@ -1,8 +1,16 @@
-# Changelog
+CHANGELOG.md# Changelog
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 - No unreleased changes so far
+
+## [0.22.4] - 2022-01-12
+### Fixed
+- Fix problem with stored tokens
+- Hide 504 gateway_timeout error on missing parking position
+
+### Changed
+- Updated API to 0.30.4
 
 ## [0.22.3] - 2022-01-11
 ### Fixed
@@ -420,7 +428,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.3..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.4..HEAD
+[0.22.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.4
 [0.22.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.3
 [0.22.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.2
 [0.22.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.1

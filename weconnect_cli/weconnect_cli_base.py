@@ -273,6 +273,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             weConnect.persistTokens()
         if not args.noCache:
             weConnect.persistCacheAsJson(args.cachefile)
+        weConnect.disconnect()
         if args.elapsedStatistics:
             print(f'Minimum response time {weConnect.getMinElapsed()}')
             print(f'Average response time {weConnect.getAvgElapsed()}')

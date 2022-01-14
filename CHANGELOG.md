@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.22.5] - 2022-01-14
+### Fixed
+- Change datatype for chargePower_kW and chargeRate_kmph from Integer to Float
+
+### Changed
+- Updated API to 0.32.0
+
 ## [0.22.4] - 2022-01-12
 ### Fixed
 - Fix problem with stored tokens
@@ -428,7 +435,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.4..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.5..HEAD
+[0.22.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.5
 [0.22.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.4
 [0.22.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.3
 [0.22.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.2

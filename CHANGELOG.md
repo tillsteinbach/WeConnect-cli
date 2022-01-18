@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.22.7] - 2022-01-18
+### Fixed
+- Add new tags attribute
+
+### Changed
+- Updated API to 0.33.0
+
 ## [0.22.6] - 2022-01-17
 ### Fixed
 - Fixed a problem where the temperature of the climatization is always set to 20.5 C
@@ -442,7 +449,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.6..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.7..HEAD
+[0.22.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.7
 [0.22.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.6
 [0.22.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.5
 [0.22.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.4

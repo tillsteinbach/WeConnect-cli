@@ -58,16 +58,16 @@ ID.3
 ```
 or the "set" command:
 ```bash
-weconnect-cli --username user@mail.de --password test123 set /vehicles/WVWABCE1ZSD057394/controls/climatization stop
+weconnect-cli --username user@mail.de --password test123 set /vehicles/WVWABCE1ZSD057394/controls/climatisation stop
 ```
 The "events" command allows you to monitor what is happening on the WeConnect Interface:
 ```bash
 weconnect-cli --username user@mail.de --password test123 events
-2021-05-26 16:49:58.698570: /vehicles/WVWABCE1ZSD057394/status/accessStatus/overallStatus: new value: unsafe
-2021-05-26 16:49:58.698751: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/bonnet/lockState: new value: unknown lock state
-2021-05-26 16:49:58.698800: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/bonnet/openState: new value: closed
-2021-05-26 16:49:58.698980: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/frontLeft/lockState: new value: unlocked
-2021-05-26 16:49:58.699056: /vehicles/WVWABCE1ZSD057394/status/accessStatus/doors/frontLeft/openState: new value: closed
+2021-05-26 16:49:58.698570: /vehicles/WVWABCE1ZSD057394/access/accessStatus/overallStatus: new value: unsafe
+2021-05-26 16:49:58.698751: /vehicles/WVWABCE1ZSD057394/access/accessStatus/doors/bonnet/lockState: new value: unknown lock state
+2021-05-26 16:49:58.698800: /vehicles/WVWABCE1ZSD057394/access/accessStatus/doors/bonnet/openState: new value: closed
+2021-05-26 16:49:58.698980: /vehicles/WVWABCE1ZSD057394/access/accessStatus/doors/frontLeft/lockState: new value: unlocked
+2021-05-26 16:49:58.699056: /vehicles/WVWABCE1ZSD057394/access/accessStatus/doors/frontLeft/openState: new value: closed
 ```
 ### Charging Stations
 To obtain data for charging stations you have to add a location to search for in geo coordinates and a search radius in meters:
@@ -114,7 +114,7 @@ user@mail.de@weconnect-sh:/vehicles/WVWABCE13SD057505/status/parkingPosition$ ca
 [parkingPosition] (last captured 2021-06-01T19:05:04+00:00)
 	Latitude: 51.674535
 	Longitude: 16.154376
-user@mail.de@weconnect-sh:/vehicles/WVWABCE13SD057505/status/parkingPosition$ exit
+user@mail.de@weconnect-sh:/vehicles/WVWABCE13SD057505/parking/parkingPosition$ exit
 Bye
 ```
 ### Caching

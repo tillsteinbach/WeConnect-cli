@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.23.0] - 2022-01-23
+
+### Changed
+- All selective topics are now under "domains" section (Warning! This is a breaking change!)
+- Updated API to 0.34.0
+
 ## [0.22.7] - 2022-01-18
 ### Fixed
 - Add new tags attribute
@@ -449,7 +455,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.22.7..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.23.0..HEAD
+[0.23.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.23.0
 [0.22.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.7
 [0.22.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.6
 [0.22.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.22.5

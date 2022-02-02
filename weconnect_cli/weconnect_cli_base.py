@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 import sys
 import os
 import argparse
@@ -20,6 +21,14 @@ LOG_LEVELS = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 DEFAULT_LOG_LEVEL = "ERROR"
 
 LOG = logging.getLogger("weconnect-cli")
+
+
+class Formats(Enum):
+    STRING = 'string'
+    JSON = 'json'
+
+    def __str__(self):
+        return self.value
 
 
 class NumberRangeArgument:
@@ -99,6 +108,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     parserList.set_defaults(command='list')
     parserGet = subparsers.add_parser('get', aliases=['g'], help='Get ressources by id and exit')
     parserGet.add_argument('id', metavar='ID', type=str, help='Id to fetch')
+    parserGet.add_argument('--format', type=Formats, default=Formats.STRING, help='Output format', choices=list(Formats))
     parserGet.set_defaults(command='get')
     parserSet = subparsers.add_parser('set', aliases=['s'], help='Set ressources by id and exit')
     parserSet.add_argument('id', metavar='ID', type=str, help='Id to set')
@@ -202,10 +212,16 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
             element = weConnect.getByAddressString(args.id)
             if element:
-                if isinstance(element, dict):
-                    print('\n'.join([str(value) for value in element.values()]))
+                if args.format == Formats.STRING:
+                    if isinstance(element, dict):
+                        print('\n'.join([str(value) for value in element.values()]))
+                    else:
+                        print(element)
+                elif args.format == Formats.JSON:
+                    print(element.toJSON())
                 else:
-                    print(element)
+                    print('Unknown format')
+                    sys.exit(-1)
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
                 sys.exit(-1)

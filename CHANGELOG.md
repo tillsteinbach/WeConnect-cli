@@ -2,7 +2,8 @@ CHANGELOG.md# Changelog
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-- No unreleased changes so far
+### Added
+- Possibility to output and save json format for the whole or parts of the tree
 
 ## [0.23.2] - 2022-01-28
 ### Fixed

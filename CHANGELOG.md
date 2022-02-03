@@ -2,8 +2,17 @@ CHANGELOG.md# Changelog
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- No unreleased changes so far
+
+## [0.24.0] - 2022-02-03
 ### Added
 - Possibility to output and save json format for the whole or parts of the tree
+- Attributes for automation/chargingProfiles
+- Added status fail_charge_plug_not_connected
+
+### Changed
+- Refactors the OAuth procedure
+- Updated API to 0.36.0
 
 ## [0.23.2] - 2022-01-28
 ### Fixed
@@ -469,7 +478,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.23.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.24.0..HEAD
+[0.24.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.24.0
 [0.23.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.23.2
 [0.23.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.23.1
 [0.23.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.23.0

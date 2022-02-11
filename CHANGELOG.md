@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.24.1] - 2022-02-11
+### Fixed
+- Login to WeConnect works again after changes on login page
+- Fixes json output for values that are zero
+- Fixes for chargePower, chargeRate and remaining climatisationTime
+
+### Changed
+- Updated API to 0.36.3
+
 ## [0.24.0] - 2022-02-03
 ### Added
 - Possibility to output and save json format for the whole or parts of the tree
@@ -478,7 +487,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.24.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.24.1..HEAD
+[0.24.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.24.1
 [0.24.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.24.0
 [0.23.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.23.2
 [0.23.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.23.1

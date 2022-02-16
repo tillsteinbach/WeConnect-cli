@@ -1,8 +1,20 @@
-CHANGELOG.mdCHANGELOG.md# Changelog
+# Changelog
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 - No unreleased changes so far
+
+## [0.25.0] - in testing
+
+### Changed
+- Requests changed from list to dict
+- Updated API to 0.37.0
+
+### Added
+- Possibility to use temperature when startng climatisation
+- Added fail_no_external_power to generic request status
+- Added chargeType attribute to chargingStatus
+- Added chargingSettings attribute to chargingStatus
 
 ## [0.24.2] - 2022-02-12
 ### Fixed

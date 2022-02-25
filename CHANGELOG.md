@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
-## [0.25.0] - in testing
+## [0.25.0] - 2022-02-25
 ### Fixed
 - Requests tracking behaviour
 - Catch error when token could not be fetched

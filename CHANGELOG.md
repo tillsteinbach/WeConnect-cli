@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.25.1] - 2022-02-28
+### Fixed
+- Bug in charging control
+
+### Changed
+- Updated API to 0.37.1
+
 ## [0.25.0] - 2022-02-25
 ### Fixed
 - Requests tracking behaviour
@@ -509,7 +516,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.25.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.25.1..HEAD
+[0.25.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.25.1
 [0.25.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.25.0
 [0.24.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.24.2
 [0.24.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.24.1

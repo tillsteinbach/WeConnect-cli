@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.25.2] - 2022-03-04
+### Fixed
+- Catch error when server is not responding correctly during login
+
+### Changed
+- Updated API to 0.37.2
+
 ## [0.25.1] - 2022-02-28
 ### Fixed
 - Bug in charging control

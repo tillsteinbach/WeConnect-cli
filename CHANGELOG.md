@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.26.1] - 2022-03-22
+### Changed
+- Improved error messages on login errors
+- Updated API to 0.38.1
+
 ## [0.26.0] - 2022-03-19
 ### Added
 - Added BatteryPowerLevel 'off' in readiness status.
@@ -532,7 +537,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.26.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.26.1..HEAD
+[0.26.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.26.1
 [0.26.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.26.0
 [0.25.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.25.2
 [0.25.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.25.1

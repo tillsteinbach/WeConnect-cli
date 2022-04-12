@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.27.0] - 2022-04-12
+### Added
+- Support for warning lights including png icons
+
+### Changed
+- Updated API to 0.39.0
+
 ## [0.26.1] - 2022-03-22
 ### Changed
 - Improved error messages on login errors
@@ -537,7 +544,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.26.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.27.0..HEAD
+[0.27.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.27.0
 [0.26.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.26.1
 [0.26.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.26.0
 [0.25.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.25.2

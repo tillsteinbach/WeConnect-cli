@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.29.0] - 2022-06-12
+### Changed
+- Updated API to 0.41.0
+
+### Added
+- selective allCapable added to only fetch data that is provided by the car
+
+### Fixed
+- Errors in domains are catched and do not produce warnings anymore
+
 ## [0.28.0] - 2022-05-12
 ### Changed
 - Updated API to 0.40.0
@@ -548,7 +558,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.28.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.29.0..HEAD
+[0.29.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.29.0
 [0.28.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.28.0
 [0.27.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.27.0
 [0.26.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.26.1

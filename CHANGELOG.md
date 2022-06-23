@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.30.1] - 2022-06-23
+### Added
+- Added new values for attribute externalPower: active
+- Added new values for attribute ledColor: green, red
+
+### Changed
+- Updated API to 0.43.1
+
 ## [0.30.0] - 2022-06-22 (Happy birthday Peer!)
 ### Added
 - Added new attributes: externalPower, brandCode, autoUnlockPlugWhenChargedAC, ledColor (warning, it is not yet clear what values are allowed, so use these with caution)
@@ -565,7 +573,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.30.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.30.1..HEAD
+[0.30.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.1
 [0.30.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.0
 [0.29.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.29.0
 [0.28.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.28.0

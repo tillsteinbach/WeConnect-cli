@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.30.2] - 2022-06-23
+### Added
+- Added new values for attribute externalPower: unsupported
+- Added new values for attribute chragingStatus: unsupported
+
+### Changed
+- Updated API to 0.43.2
+
 ## [0.30.1] - 2022-06-23
 ### Added
 - Added new values for attribute externalPower: active
@@ -573,7 +581,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.30.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.30.2..HEAD
+[0.30.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.2
 [0.30.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.1
 [0.30.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.0
 [0.29.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.29.0

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.31.2] - 2022-06-28
+### Fixed
+- Fixed error with warning light icon
+
 ## [0.31.1] - 2022-06-28
 ### Fixed
 - Fixed setting climatisation settings (all but climatisationWithoutExternalPower)
@@ -603,7 +607,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.2..HEAD
+[0.31.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.2
 [0.31.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.1
 [0.31.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.0
 [0.30.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.2

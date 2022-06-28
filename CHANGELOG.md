@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.31.0] - 2022-06-28
+### Added
+- ChargingState: DISCHARGING
+- ChargeMode: HOME_STORAGE_CHARGING, IMMEDIATE_DISCHARGING
+- window heating control: only for MEB cars
+- wake-up control: not for MEB cars
+- DevicePlatform: MBB_OFFLINE
+- Role: CDIS_UNKNOWN_USER
+- UserRoleStatus: DISABLED_HMI, DISABLED_SPIN, DISABLED_PU_SPIN_RESET, CDIS_UNKNOWN_USER
+
+### Changed
+- Updated API to 0.44.0
+
 ## [0.30.2] - 2022-06-23
 ### Added
 - Added new values for attribute externalPower: unsupported
@@ -19,6 +32,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Updated API to 0.43.1
+=======
 
 ## [0.30.0] - 2022-06-22 (Happy birthday Peer!)
 ### Added
@@ -581,7 +595,9 @@ All notable changes to this project will be documented in this file.
 ## [0.1.0] - 2021-05-26
 Initial release
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.30.2..HEAD
+
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.0..HEAD
+[0.31.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.0
 [0.30.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.2
 [0.30.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.1
 [0.30.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.0

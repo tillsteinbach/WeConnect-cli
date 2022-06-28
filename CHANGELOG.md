@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.31.1] - 2022-06-28
+### Fixed
+- Fixed setting climatisation settings (all but climatisationWithoutExternalPower)
+
+### Changed
+- Updated API to 0.44.1
+
 ## [0.31.0] - 2022-06-28
 ### Added
 - ChargingState: DISCHARGING
@@ -596,7 +603,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.1..HEAD
+[0.31.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.1
 [0.31.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.0
 [0.30.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.2
 [0.30.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.30.1

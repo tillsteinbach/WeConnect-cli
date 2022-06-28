@@ -8,6 +8,9 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Fixed error with warning light icon
 
+### Changed
+- Updated API to 0.44.2
+
 ## [0.31.1] - 2022-06-28
 ### Fixed
 - Fixed setting climatisation settings (all but climatisationWithoutExternalPower)

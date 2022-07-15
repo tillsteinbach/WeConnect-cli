@@ -1,2 +1,2 @@
-weconnect[Images]~=0.44.2
+weconnect[Images]~=0.45.0
 ascii_magic~=1.6

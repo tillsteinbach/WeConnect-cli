@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.31.3] - 2022-07-25
+### Fixed
+- ReadinessStatus is available again after changes in the backend
+
+### Changed
+- Updated API to 0.45.1
+- Will force a relogin after 6 hours to prevent disapearing items
+
 ## [0.31.2] - 2022-06-28
 ### Fixed
 - Fixed error with warning light icon
@@ -610,7 +618,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.3..HEAD
+[0.31.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.3
 [0.31.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.2
 [0.31.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.1
 [0.31.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.0

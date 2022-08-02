@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.31.4] - 2022-08-02
+### Added
+- Attributes for diesel cars
+- New status departureTimersStatus & chargingProfilesStatus
+- Support for python 3.10
+
 ## [0.31.3] - 2022-07-25
 ### Fixed
 - ReadinessStatus is available again after changes in the backend
@@ -618,7 +624,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.3..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.4..HEAD
+[0.31.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.4
 [0.31.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.3
 [0.31.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.2
 [0.31.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.1

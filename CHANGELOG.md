@@ -10,6 +10,9 @@ All notable changes to this project will be documented in this file.
 - New status departureTimersStatus & chargingProfilesStatus
 - Support for python 3.10
 
+### Changed
+- Updated API to 0.46.0
+
 ## [0.31.3] - 2022-07-25
 ### Fixed
 - ReadinessStatus is available again after changes in the backend

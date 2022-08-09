@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.32.0] - in testing
+### Added
+- Support for S-PIN by adding --spin 1234 or in .netrc file: "account 1234"
+- Support for locking/unlocking (selected cars only)
+
+### Changed
+- Updated API to 0.47.0
+
 ## [0.31.4] - 2022-08-02
 ### Added
 - Attributes for diesel cars
@@ -627,7 +635,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.31.4..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.32.0..HEAD
+[0.32.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.0
 [0.31.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.4
 [0.31.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.3
 [0.31.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.2

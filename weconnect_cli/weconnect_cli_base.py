@@ -66,6 +66,8 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
     weConnectGroup = parser.add_argument_group('WeConnect')
     weConnectGroup.add_argument('-u', '--username', help='Username of Volkswagen id', required=False)
     weConnectGroup.add_argument('-p', '--password', help='Password of Volkswagen id', required=False)
+    weConnectGroup.add_argument('-s', '--spin', help='S-PIN of Volkswagen id, required for selected commands', required=False, nargs='?', action='store',
+                                default=None, const=True)
     defaultNetRc = os.path.join(os.path.expanduser("~"), ".netrc")
     weConnectGroup.add_argument('--netrc', help=f'File in netrc syntax providing login (default: {defaultNetRc}).'
                                 ' Netrc is only used when username and password are not provided  as arguments', default=None, required=False)
@@ -139,6 +141,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
 
     username = None
     password = None
+    spin = None
 
     if args.username is not None and args.password is not None:
         username = args.username
@@ -168,12 +171,31 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 sys.exit(1)
             username = args.username
             password = getpass.getpass()
+    if args.spin is not None:
+        spin = args.spin
+    else:
+        if args.netrc is not None:
+            netRcFilename = args.netrc
+        else:
+            netRcFilename = defaultNetRc
+        try:
+            secrets = netrc.netrc(file=args.netrc)
+            _, account, _ = secrets.authenticators("volkswagen.de")
+            if account is not None:
+                spin = account
+        except netrc.NetrcParseError as err:
+            LOG.error('Authentification using .netrc failed: %s', err)
+            sys.exit(1)
+        except TypeError:
+            pass
+        except FileNotFoundError:
+            pass
     tokenfile = None
     if not args.noTokenStorage:
         tokenfile = args.tokenfile
 
     try:  # pylint: disable=too-many-nested-blocks
-        weConnect = weconnect.WeConnect(username=username, password=password, tokenfile=tokenfile,
+        weConnect = weconnect.WeConnect(username=username, password=password, spin=spin, tokenfile=tokenfile,
                                         updateAfterLogin=False, loginOnInit=False, updateCapabilities=(not args.noCapabilities),
                                         updatePictures=(not args.noPictures), selective=args.selective, forceReloginAfter=21600)
         if args.noCache or not os.path.isfile(args.cachefile):

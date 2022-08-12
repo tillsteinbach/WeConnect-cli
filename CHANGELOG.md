@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.32.1] - 2022-08-12
+### Fixed
+- Removed left over debug output
+
 ## [0.32.0] - 2022-08-11
 ### Added
 - Support for S-PIN by adding --spin 1234 or in .netrc file: "account 1234"
@@ -635,7 +639,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.32.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.32.1..HEAD
+[0.32.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.1
 [0.32.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.0
 [0.31.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.4
 [0.31.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.3

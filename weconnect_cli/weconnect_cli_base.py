@@ -172,7 +172,6 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 sys.exit(1)
             username = args.username
             password = getpass.getpass()
-    print(args.spin)
     if args.spin is not None:
         spin = args.spin
     else:

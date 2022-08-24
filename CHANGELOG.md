@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.32.2] - 2022-08-24
+### Fixed
+- Allow climatization without external power when the real setting from the car was not received
+
+### Changed
+- Updated API to 0.47.1
+
 ## [0.32.1] - 2022-08-12
 ### Fixed
 - Removed left over debug output
@@ -639,7 +646,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.32.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.32.2..HEAD
+[0.32.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.2
 [0.32.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.1
 [0.32.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.0
 [0.31.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.31.4

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.33.1] - 2022-09-23
+### Added
+- Tire warning light category
+
+### Fixed
+- Bug with honk and flash endpoint
+
+### Changed
+- Updated API to 0.48.1
+
 ## [0.33.0] - 2022-09-19
 ### Fixed
 - fix parsing of empty strings
@@ -658,7 +668,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.1..HEAD
+[0.33.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.1
 [0.33.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.0
 [0.32.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.2
 [0.32.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.1

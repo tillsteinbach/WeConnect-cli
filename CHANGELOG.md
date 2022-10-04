@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.33.2] - 2022-09-23
+### Added
+- Add invalid door lock state
+
+### Changed
+- Updated API to 0.48.2
+
 ## [0.33.1] - 2022-09-23
 ### Added
 - Tire warning light category
@@ -668,7 +675,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.2..HEAD
+[0.33.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.2
 [0.33.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.1
 [0.33.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.0
 [0.32.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.32.2

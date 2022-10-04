@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
-## [0.33.2] - 2022-09-23
+## [0.33.2] - 2022-10-04
 ### Added
 - Add invalid door lock state
 

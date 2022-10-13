@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.33.3] - 2022-10-13
+### Changed
+- Updated API to 0.48.3
+
 ## [0.33.2] - 2022-10-04
 ### Added
 - Add invalid door lock state
@@ -675,7 +679,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.3..HEAD
+[0.33.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.3
 [0.33.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.2
 [0.33.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.1
 [0.33.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.0

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.33.5] - 2022-11-30
+### Fixed
+- Fixed bug where an attribute was not correctly shown again when it reappears without changed value
+
+### Changed
+- Updated API to 0.50.1
+
 ## [0.33.4] - 2022-11-15
 ### Changed
 - Updated API to 0.49.0
@@ -683,7 +690,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.4..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.5..HEAD
+[0.33.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.5
 [0.33.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.4
 [0.33.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.3
 [0.33.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.2

@@ -419,7 +419,7 @@ class WeConnectShell(cmd.Cmd):
 
     def do_update(self, arguments):
         del arguments
-        self.weconnect.update(updateCapabilities=(not self.noCapabilities), updatePictures=(not self.noPictures))
+        self.weconnect.update(updateCapabilities=not self.noCapabilities, updatePictures=not self.noPictures)
         print('update done')
 
     def help_cat(self):  # pylint: disable=no-self-use

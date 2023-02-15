@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.33.6] - 2023-02-15
+### Added
+- Add new error state (Thanks to user madd0)
+- Add new timer attribute targetSOC_pct
+
+### Fixed
+- Bug that could make attributes disappear on certain values
+- 
+### Fixed
+- Fixed bug where an attribute was not correctly shown again when it reappears without changed value
+
+### Changed
+- Updated API to 0.52.0
+
 ## [0.33.5] - 2022-11-30
 ### Fixed
 - Fixed bug where an attribute was not correctly shown again when it reappears without changed value
@@ -690,7 +704,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.5..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.6..HEAD
+[0.33.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.6
 [0.33.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.5
 [0.33.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.4
 [0.33.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.3

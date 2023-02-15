@@ -11,9 +11,6 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Bug that could make attributes disappear on certain values
-- 
-### Fixed
-- Fixed bug where an attribute was not correctly shown again when it reappears without changed value
 
 ### Changed
 - Updated API to 0.52.0

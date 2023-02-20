@@ -11,8 +11,6 @@ import time
 import tempfile
 import cmd
 
-import ascii_magic
-
 from weconnect import weconnect, addressable, errors, util, domain
 from weconnect.__version import __version__ as __weconnect_version__
 

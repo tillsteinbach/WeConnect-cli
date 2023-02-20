@@ -136,8 +136,6 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
         for handler in logging.root.handlers:
             handler.addFilter(util.DuplicateFilter())
 
-    #ascii_magic.init_terminal()
-
     username = None
     password = None
     spin = None

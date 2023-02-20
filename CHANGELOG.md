@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.33.7] - 2023-02-20
+### Changed
+- Updated API to 0.54.0
+
 ## [0.33.6] - 2023-02-15
 ### Added
 - Add new error state (Thanks to user madd0)
@@ -701,7 +705,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.6..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.7..HEAD
+[0.33.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.7
 [0.33.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.6
 [0.33.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.5
 [0.33.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.4

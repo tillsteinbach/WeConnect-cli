@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.33.10] - in testing 
+### Added
+- Add suport for battery care settings
+- Add timers operation to fix warnings
+
+### Changed
+- Updated API to 0.55.0
+
 ## [0.33.9] - 2023-03-02 
 ### Fixed
 - Fixes unknown operation error
@@ -719,7 +727,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.9..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.10..HEAD
+[0.33.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.10
 [0.33.9]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.9
 [0.33.8]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.8
 [0.33.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.7

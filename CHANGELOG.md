@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
-## [0.33.10] - in testing 
+## [0.33.10] - 2023-04-28 
 ### Added
 - Add suport for battery care settings
 - Add timers operation to fix warnings

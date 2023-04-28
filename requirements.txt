@@ -1,1 +1,1 @@
-weconnect[Images]~=0.55.0.dev1
+weconnect[Images]~=0.55.0

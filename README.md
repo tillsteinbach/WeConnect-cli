@@ -136,6 +136,15 @@ password testpassword123
 ```
 You can also provide the location of the netrc file using the --netrc option
 
+The optional S-PIN needed for some commands can be provided in the account section:
+```
+# For WeConnect
+machine volkswagen.de
+login test@test.de
+password testpassword123
+account 1234
+```
+
 ### Images
 You can also work with images from the API
 Either you have a look at the commandline

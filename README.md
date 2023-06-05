@@ -71,7 +71,7 @@ weconnect-cli --username user@mail.de --password test123 events
 ```
 
 ### S-PIN
-For some commands you need in addition to your login the so called S-PIN, you can provide it with the `-s` option:
+For some commands (e.g. locking/unlocking supported on some cars) you need in addition to your login the so called S-PIN, you can provide it with the `-s` option:
 ```bash
 weconnect-cli --username user@mail.de --password test123 -s 1234 set /vehicles/WVWABCE1ZSD057394/controls/access lock
 ```

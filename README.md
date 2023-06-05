@@ -69,6 +69,13 @@ weconnect-cli --username user@mail.de --password test123 events
 2021-05-26 16:49:58.698980: /vehicles/WVWABCE1ZSD057394/access/accessStatus/doors/frontLeft/lockState: new value: unlocked
 2021-05-26 16:49:58.699056: /vehicles/WVWABCE1ZSD057394/access/accessStatus/doors/frontLeft/openState: new value: closed
 ```
+
+### S-PIN
+For some commands you need in addition to your login the so called S-PIN, you can provide it with the `-s` option:
+```bash
+weconnect-cli --username user@mail.de --password test123 -s 1234 set /vehicles/WVWABCE1ZSD057394/controls/access lock
+```
+
 ### Charging Stations
 To obtain data for charging stations you have to add a location to search for in geo coordinates and a search radius in meters:
 ```bash

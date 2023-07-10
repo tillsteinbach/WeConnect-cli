@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.34.0] - 2023-07-10 
+### Added
+- BETA: functionality to read status for active ventilation and auxiliary heating (non electric cars)
+- BETA: functionality to control active ventilation and auxiliary heating (non electric cars)
+- Added heaterSource attribute in climatization settings
+- Possibility to read trip statistics (if supported by the car)
+
+### Changed
+- Updated API to 0.56.0
+
 ## [0.33.10] - 2023-04-28 
 ### Added
 - Add suport for battery care settings
@@ -727,7 +737,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.33.10..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.34.0..HEAD
+[0.34.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.0
 [0.33.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.10
 [0.33.9]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.9
 [0.33.8]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.8

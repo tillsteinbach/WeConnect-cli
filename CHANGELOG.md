@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.34.1] - 2023-07-12
+### Fixed
+- Don't throw error when fetching trips and car is not supporting certain categories
+
 ## [0.34.0] - 2023-07-10 
 ### Added
 - BETA: functionality to read status for active ventilation and auxiliary heating (non electric cars)
@@ -737,7 +741,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.34.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.34.1..HEAD
+[0.34.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.1
 [0.34.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.0
 [0.33.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.10
 [0.33.9]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.9

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.34.2] - 2023-07-12
+### Fixed
+- Another small bugfix for fetching trips
+
 ## [0.34.1] - 2023-07-12
 ### Fixed
 - Don't throw error when fetching trips and car is not supporting certain categories
@@ -741,7 +745,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.34.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.34.2..HEAD
+[0.34.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.2
 [0.34.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.1
 [0.34.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.0
 [0.33.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.33.10

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.35.0] - 2023-07-20
+### Added
+- honking and flashing on cars supporting honkAndFlash capability
+
+### Changed
+- Updated API to 0.57.0
+
 ## [0.34.2] - 2023-07-12
 ### Fixed
 - Another small bugfix for fetching trips
@@ -745,7 +752,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.34.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.35.0..HEAD
+[0.35.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.35.0
 [0.34.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.2
 [0.34.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.1
 [0.34.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.34.0

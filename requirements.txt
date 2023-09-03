@@ -1,1 +1,1 @@
-weconnect[Images]~=0.57.0
+weconnect[Images]~=0.58.0

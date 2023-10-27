@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.38.1] - 2023-10-27
+### Fixed
+- Fixes a bug introduced by the range correction
+
+### Changed
+- Updated API to 0.59.3
+
 ## [0.38.0] - 2023-10-27
 ### Fixed
 - Fixes a bug in the API that causes incorrect range values for cars using miles instead of km (thanks to user @bendavidson for the contribution)
@@ -779,7 +786,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.0..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.1..HEAD
+[0.38.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.1
 [0.38.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.0
 [0.37.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.37.0
 [0.36.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.36.0

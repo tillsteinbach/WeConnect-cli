@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.38.2] - 2023-11-15
+### Fixed
+- Fixes a bug in active ventialtion and auxiliary heating controls
+
+### Changed
+- Changed behaviour on 429 errors (no immediate retry anymore)
+- Updated API to 0.59.5
+
 ## [0.38.1] - 2023-10-27
 ### Fixed
 - Fixes a bug introduced by the range correction
@@ -786,7 +794,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.1..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.2..HEAD
+[0.38.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.2
 [0.38.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.1
 [0.38.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.0
 [0.37.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.37.0

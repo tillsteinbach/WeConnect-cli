@@ -11,6 +11,7 @@ on:
      - .github/workflows/build.yml
      - '**.py'
      - '**requirements.txt'
+     - 'pytest.ini'
   pull_request:
     paths:
      - .github/workflows/build.yml

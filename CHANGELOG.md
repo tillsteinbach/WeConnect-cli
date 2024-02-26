@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.38.3] - 2024-02-26
+### Added
+- Adds several new attributes and status
+
+### Changed
+- Updated API to 0.60.0
+
 ## [0.38.2] - 2023-11-15
 ### Fixed
 - Fixes a bug in active ventialtion and auxiliary heating controls
@@ -794,7 +801,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.2..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.3..HEAD
+[0.38.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.3
 [0.38.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.2
 [0.38.1]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.1
 [0.38.0]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.0

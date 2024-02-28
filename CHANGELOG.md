@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.38.5] - 2024-02-28
+### Added
+- fixes a bug introduced with new departure timer attributes
+
+### Changed
+- Updated API to 0.60.2
+
 ## [0.38.4] - 2024-02-26
 ### Added
 - Adds new departure timer attributes
@@ -808,7 +815,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.4..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.5..HEAD
+[0.38.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.5
 [0.38.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.4
 [0.38.3]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.3
 [0.38.2]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.2

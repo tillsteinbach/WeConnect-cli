@@ -830,7 +830,7 @@ Initial release
 
 
 [unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.7..HEAD
-[0.38.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.7
+[0.38.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.7
 [0.38.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.6
 [0.38.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.5
 [0.38.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.4

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.38.7] - 2024-09-13
+### Added
+- Added several missing attributes
+
+### Changed
+- Updated API to 0.60.5
+
 ## [0.38.6] - 2024-08-02
 ### Added
 - Added several missing attributes
@@ -822,7 +829,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.6..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.7..HEAD
+[0.38.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.7
 [0.38.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.6
 [0.38.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.5
 [0.38.4]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.4

@@ -1,4 +1,11 @@
 # WeConnect-cli
+## WARNING:
+:warning: :warning: :warning:
+
+**WeConnect-cli will reach end of life this year. It will be repalced by [CarConnectivity-cli](https://github.com/tillsteinbach/CarConnectivity-cli) which will provide equal functionality but for more brands such as Volkswagen, Skoda, Seat, Cupra. Users should start to check if moving to [CarConnectivity-cli](https://github.com/tillsteinbach/CarConnectivity-cli) is an option.**
+
+:warning: :warning: :warning:
+
 [![GitHub sourcecode](https://img.shields.io/badge/Source-GitHub-green)](https://github.com/tillsteinbach/WeConnect-cli/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/tillsteinbach/WeConnect-cli)](https://github.com/tillsteinbach/WeConnect-cli/releases/latest)
 [![GitHub](https://img.shields.io/github/license/tillsteinbach/WeConnect-cli)](https://github.com/tillsteinbach/WeConnect-cli/blob/master/LICENSE)

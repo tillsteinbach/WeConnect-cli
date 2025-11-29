@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.38.8] - 2025-11-29
+### Fixed
+- Fixes login due to changes in the login form
+
 ## [0.38.7] - 2024-09-13
 ### Added
 - Added several missing attributes
@@ -829,7 +833,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.7..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.8..HEAD
+[0.38.8]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.8
 [0.38.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.7
 [0.38.6]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.6
 [0.38.5]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.5

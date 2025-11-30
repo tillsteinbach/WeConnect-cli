@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - No unreleased changes so far
 
+## [0.38.10] - 2025-11-30
+### Fixed
+- Fixes typo from backporting AuthentificationError/AuthenticationError
+
 ## [0.38.9] - 2025-11-29
 ### Fixed
 - Fixes refresh token handling that was broken in 0.60.9 due to typo when backporting changes
@@ -837,7 +841,8 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 
-[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.9..HEAD
+[unreleased]: https://github.com/tillsteinbach/WeConnect-cli/compare/v0.38.10..HEAD
+[0.38.10]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.10
 [0.38.9]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.9
 [0.38.8]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.8
 [0.38.7]: https://github.com/tillsteinbach/WeConnect-cli/releases/tag/v0.38.7

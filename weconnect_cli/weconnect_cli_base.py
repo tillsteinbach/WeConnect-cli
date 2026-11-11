@@ -249,10 +249,10 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                     print(element.toJSON())
                 else:
                     print('Unknown format')
-                    sys.exit(-1)
+                    sys.exit(1)
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
-                sys.exit(-1)
+                sys.exit(1)
         elif args.command == 'set':
             weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
             element = weConnect.getByAddressString(args.id)
@@ -261,17 +261,17 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                     element.value = args.value
                 except ValueError as valueError:
                     print(f'id {args.id} cannot be set: {valueError}', file=sys.stderr)
-                    sys.exit(-1)
+                    sys.exit(1)
                 except NotImplementedError:
                     print(f'id {args.id} cannot be set. You can see all changeable entries with "list -s"',
                           file=sys.stderr)
-                    sys.exit(-1)
+                    sys.exit(1)
                 except errors.SetterError as err:
                     print(f'id {args.id} cannot be set: {err}', file=sys.stderr)
-                    sys.exit(-1)
+                    sys.exit(1)
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
-                sys.exit(-1)
+                sys.exit(1)
         elif args.command == 'save':
             weConnect.update(updateCapabilities=(not args.noCapabilities), updatePictures=(not args.noPictures), selective=args.selective)
             element = weConnect.getByAddressString(args.id)
@@ -280,13 +280,13 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                     element.saveToFile(args.filename)
                 except ValueError as valueError:
                     print(f'id {args.id} cannot be saved: {valueError}', file=sys.stderr)
-                    sys.exit(-1)
+                    sys.exit(1)
                 except AttributeError:
                     print(f'id {args.id} cannot be saved', file=sys.stderr)
-                    sys.exit(-1)
+                    sys.exit(1)
             else:
                 print(f'id {args.id} not found', file=sys.stderr)
-                sys.exit(-1)
+                sys.exit(1)
         elif args.command == 'events':
             if args.noCache:
                 LOG.warning('ignoring --no-cache parameter in events mode')
@@ -312,7 +312,7 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
                 time.sleep(args.interval)
         else:
             LOG.error('command not implemented')
-            sys.exit(-1)
+            sys.exit(1)
         if not args.noTokenStorage:
             weConnect.persistTokens()
         if not args.noCache:
@@ -325,14 +325,14 @@ def main():  # noqa: C901 # pylint: disable=too-many-statements,too-many-branche
             print(f'Total response time {weConnect.getTotalElapsed()}')
     except errors.AuthentificationError as e:
         LOG.critical('There was a problem when authenticating with WeConnect: %s', e)
-        sys.exit(-1)
+        sys.exit(1)
     except errors.APICompatibilityError as e:
         LOG.critical('There was a problem when communicating with WeConnect.'
                      ' If this problem persists please open a bug report: %s', e)
-        sys.exit(-1)
+        sys.exit(1)
     except errors.RetrievalError as e:
         LOG.critical('There was a problem when communicating with WeConnect: %s', e)
-        sys.exit(-1)
+        sys.exit(1)
 
 
 class WeConnectShell(cmd.Cmd):
